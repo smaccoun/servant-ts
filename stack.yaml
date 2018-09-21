@@ -1,0 +1,7 @@
+resolver: lts-12.10
+
+
+extra-deps: true
+extra-deps:
+- git: https://github.com/smaccoun/aeson-generic-ts.git
+  commit: 6a80b2d4073a7c2c99f651d3e95ea397e7c4b836

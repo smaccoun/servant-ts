@@ -1,0 +1,23 @@
+name:                servant-ts
+version:             0.1.0.0
+#synopsis:
+#description:
+homepage:            https://github.com/smaccoun/servant-ts#readme
+license:             BSD3
+author:              Steven MacCoun
+maintainer:          theraccoun@gmail.com
+copyright:           2018 Steven MacCoun
+category:            Web
+extra-source-files:
+- README.md
+
+dependencies:
+  - base >= 4.7 && < 5
+  - aeson-generic-ts
+  - servant
+  - servant-foreign
+
+executables:
+  servant-ts:
+    source-dirs:      src
+    main:             Main.hs
