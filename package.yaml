@@ -16,6 +16,7 @@ dependencies:
   - aeson-generic-ts
   - servant
   - servant-foreign
+  - text
 
 executables:
   servant-ts:
