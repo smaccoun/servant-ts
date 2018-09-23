@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 01755233fafb784bc795fd12b01d108e608fb9eea5090b52c4c85c3fd819a677
+-- hash: fa19b052af1ce185a5506f13a1ffe8cd7ca20adfe7490f70d24d4cf72b204852
 
 name:           servant-ts
 version:        0.1.0.0
@@ -26,6 +26,7 @@ test-suite servant-ts-test
       Spec
       Convert
       Main
+      TSFunctions
       APIs
       Paths_servant_ts
   hs-source-dirs:
@@ -37,6 +38,7 @@ test-suite servant-ts-test
       aeson-generic-ts
     , base >=4.7 && <5
     , hspec
+    , lens
     , servant
     , servant-foreign
     , text

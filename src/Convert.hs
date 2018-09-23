@@ -1,12 +1,13 @@
 module Convert where
 
+import           Control.Lens
 import           Data.Maybe
 import           Data.Proxy      (Proxy (Proxy))
 import           Data.Text
+import qualified Data.Text       as T
 import           GHC.Generics
-import           Servant.Foreign (Foreign, GenerateList, HasForeign,
-                                  HasForeignType, Req, listFromAPI, typeFor,
-                                  _reqReturnType)
+import           Servant.Foreign
+import           TSFunctions
 import           Typescript
 
 
@@ -22,3 +23,31 @@ servantToTS ::
          -> [Req TSType]
 servantToTS =
     listFromAPI (Proxy :: Proxy LangTypescript) (Proxy :: Proxy TSType)
+
+
+getFunctions :: [Req TSType] -> [Text]
+getFunctions reqs =
+  getFunction <$> reqs
+
+getFunction :: Req TSType -> Text
+getFunction req =
+  printTSFunction cfg
+  where
+    cfg =
+      TSFunctionConfig
+        {_tsFuncName   = frmtFunctionName . _reqFuncName $ req
+        ,_tsArgs       = []
+        ,_tsReturnType = (getTypeName . fromMaybe TSAny . _reqReturnType) req
+        ,_body = ""
+        }
+
+
+frmtFunctionName :: FunctionName -> Text
+frmtFunctionName (FunctionName parts)=
+  T.intercalate "" parts
+
+getTypeName :: TSType -> Text
+getTypeName t =
+  case t of
+    TSInterface iname _ -> iname
+    _ -> ""

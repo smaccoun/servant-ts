@@ -22,8 +22,10 @@ servantTSSpec = do
       case allTypes of
         Nothing -> error "Could not match api"
         Just types -> do
+          putStrLn $ show asTS
           putStrLn $ show $ toTypescript <$> types
           putStrLn $ show types
+          putStrLn $ show $ getFunctions asTS
           types `shouldBe`
             [TSInterface "User"
               [TSField (FieldName "name") (TSPrimitiveType TSString)

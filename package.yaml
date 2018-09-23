@@ -17,11 +17,12 @@ dependencies:
   - servant
   - servant-foreign
   - text
+  - lens
 
 
 tests:
   servant-ts-test:
-    main:               Main.hs 
+    main:               Main.hs
     source-dirs:
       - test
       - src
