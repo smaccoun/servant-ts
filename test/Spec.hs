@@ -21,6 +21,14 @@ servantTSSpec = do
           allTypes = sequence $ _reqReturnType <$> asTS
       case allTypes of
         Nothing -> error "Could not match api"
-        Just t -> do
-          putStrLn $ show $ toTypescript <$> t
-          1 `shouldBe` 1
+        Just types -> do
+          putStrLn $ show $ toTypescript <$> types
+          putStrLn $ show types
+          types `shouldBe`
+            [TSInterface "User"
+              [TSField (FieldName "name") (TSPrimitiveType TSString)
+              ,TSField (FieldName "age") (TSPrimitiveType TSNumber)
+              ,TSField (FieldName "isAdmin") (TSPrimitiveType TSBoolean)
+              ]
+            ]
+
