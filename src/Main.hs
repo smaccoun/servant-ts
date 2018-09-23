@@ -29,7 +29,7 @@ import           Typescript.Types
 data LangTypescript
 
 instance (TypescriptType a) => HasForeignType LangTypescript TSType a where
-  typeFor _ _ _ = fromMaybe (TSPrimitiveType TSNumber) $ toTypescriptType (Proxy :: Proxy a)
+  typeFor _ _ _ = fromMaybe TSAny $ toTypescriptType (Proxy :: Proxy a)
 
 servantToTS ::
           ( HasForeign LangTypescript TSType api
@@ -46,6 +46,7 @@ data User = User
     } deriving (Generic, TypescriptType)
 
 type API = "users" :> Get '[JSON] User
+           :<|> "simple" :> Get '[JSON] Int
 
 main :: IO ()
 main = do

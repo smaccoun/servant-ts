@@ -18,7 +18,12 @@ dependencies:
   - servant-foreign
   - text
 
-executables:
-  servant-ts:
-    source-dirs:      src
-    main:             Main.hs
+
+tests:
+  servant-ts-test:
+    main:               Spec.hs 
+    source-dirs:
+      - test
+    dependencies:
+      - hspec
+

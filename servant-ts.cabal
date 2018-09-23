@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 847bf7696738ab8a9973a34f8a9d7eed1f886a72b7d2d6a2cdebb01553d90fac
+-- hash: 7886679eb7fbcab0c2423ec53ba08cd62957ba4a9d3cb53dbb25bbd465c9e01c
 
 name:           servant-ts
 version:        0.1.0.0
@@ -18,15 +18,18 @@ cabal-version:  >= 1.10
 extra-source-files:
     README.md
 
-executable servant-ts
-  main-is: Main.hs
+test-suite servant-ts-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
   other-modules:
+      Main
       Paths_servant_ts
   hs-source-dirs:
-      src
+      test
   build-depends:
       aeson-generic-ts
     , base >=4.7 && <5
+    , hspec
     , servant
     , servant-foreign
     , text
