@@ -1,52 +1,16 @@
-{-# LANGUAGE DataKinds             #-}
-{-# LANGUAGE DeriveAnyClass        #-}
-{-# LANGUAGE DeriveGeneric         #-}
-{-# LANGUAGE FlexibleContexts      #-}
-{-# LANGUAGE FlexibleInstances     #-}
-{-# LANGUAGE MultiParamTypeClasses #-}
-{-# LANGUAGE OverloadedStrings     #-}
-{-# LANGUAGE ScopedTypeVariables   #-}
-{-# LANGUAGE StandaloneDeriving    #-}
-{-# LANGUAGE TypeFamilies          #-}
-{-# LANGUAGE TypeOperators         #-}
-
 module Main where
 
+import           Convert
 import           Data.Maybe
-import           Data.Proxy          (Proxy (Proxy))
+import           Data.Proxy      (Proxy (Proxy))
 import           Data.Text
+import           Generate
 import           GenericMappings
 import           GenericMappings
 import           GHC.Generics
-import           Servant.API
-import           Servant.Foreign     (Foreign, GenerateList, HasForeign,
-                                      HasForeignType, Req, listFromAPI, typeFor,
-                                      _reqReturnType)
-import           Typescript.Generate
-import           Typescript.Types
+import           Types
+import           Typescript
 
-
-data LangTypescript
-
-instance (TypescriptType a) => HasForeignType LangTypescript TSType a where
-  typeFor _ _ _ = fromMaybe TSAny $ toTypescriptType (Proxy :: Proxy a)
-
-servantToTS ::
-          ( HasForeign LangTypescript TSType api
-          , GenerateList TSType (Foreign TSType api))
-         => Proxy api
-         -> [Req TSType]
-servantToTS =
-    listFromAPI (Proxy :: Proxy LangTypescript) (Proxy :: Proxy TSType)
-
-data User = User
-    {name    :: Text
-    ,age     :: Int
-    ,isAdmin :: Bool
-    } deriving (Generic, TypescriptType)
-
-type API = "users" :> Get '[JSON] User
-           :<|> "simple" :> Get '[JSON] Int
 
 main :: IO ()
 main = do

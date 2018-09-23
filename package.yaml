@@ -21,9 +21,38 @@ dependencies:
 
 tests:
   servant-ts-test:
-    main:               Spec.hs 
+    main:               Main.hs 
     source-dirs:
       - test
+      - src
+      - mock
     dependencies:
       - hspec
+
+data-dir:
+  mock
+
+default-extensions:
+- ConstraintKinds
+- DataKinds
+- DeriveGeneric
+- FlexibleContexts
+- FlexibleInstances
+- GADTs
+- GeneralizedNewtypeDeriving
+- KindSignatures
+- MultiParamTypeClasses
+- OverloadedStrings
+- PolyKinds
+- QuasiQuotes
+- RankNTypes
+- RecordWildCards
+- ScopedTypeVariables
+- StandaloneDeriving
+- TemplateHaskell
+- TypeApplications
+- TypeFamilies
+- TypeOperators
+- UndecidableInstances
+
 

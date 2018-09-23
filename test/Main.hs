@@ -1,3 +1,7 @@
 module Main where
 
-import Hspec
+import           Spec
+import           Test.Hspec
+
+main :: IO ()
+main = hspec servantTSSpec
