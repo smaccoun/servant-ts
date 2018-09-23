@@ -19,11 +19,19 @@ instance (TypescriptType a) => HasForeignType LangTypescript TSType a where
 servantToTS ::
           ( HasForeign LangTypescript TSType api
           , GenerateList TSType (Foreign TSType api))
+         => (Req TSType -> Text)
+         -> Proxy api
+         -> [Text]
+servantToTS genTS proxyApi =
+    genTS <$> servantToReqTS proxyApi
+
+servantToReqTS ::
+          ( HasForeign LangTypescript TSType api
+          , GenerateList TSType (Foreign TSType api))
          => Proxy api
          -> [Req TSType]
-servantToTS =
-    listFromAPI (Proxy :: Proxy LangTypescript) (Proxy :: Proxy TSType)
-
+servantToReqTS =
+  listFromAPI (Proxy :: Proxy LangTypescript) (Proxy :: Proxy TSType)
 
 getFunctions :: [Req TSType] -> [Text]
 getFunctions reqs =
@@ -47,7 +55,17 @@ frmtFunctionName (FunctionName parts)=
   T.intercalate "" parts
 
 getTypeName :: TSType -> Text
-getTypeName t =
-  case t of
+getTypeName type' =
+  case type' of
     TSInterface iname _ -> iname
-    _ -> ""
+    TSCollectionType col ->
+      case col of
+        TSArray t -> "Array<" <> getTypeName t <> ">"
+    TSPrimitiveType prim ->
+      case prim of
+        TSNumber -> "number"
+        TSString -> "string"
+        TSBoolean -> "boolean"
+    TSAny -> "any"
+    TSOption _ -> "TODO" --TODO
+

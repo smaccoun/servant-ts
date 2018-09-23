@@ -17,7 +17,7 @@ servantTSSpec :: Spec
 servantTSSpec = do
   describe "base" $ do
     it "should test basic" $ do
-      let (asTS :: [Req TSType]) = servantToTS (Proxy :: Proxy SimpleAPI)
+      let (asTS :: [Req TSType]) = servantToReqTS (Proxy :: Proxy SimpleAPI)
           allTypes = sequence $ _reqReturnType <$> asTS
       case allTypes of
         Nothing -> error "Could not match api"
@@ -25,7 +25,7 @@ servantTSSpec = do
           putStrLn $ show asTS
           putStrLn $ show $ toTypescript <$> types
           putStrLn $ show types
-          putStrLn $ show $ getFunctions asTS
+          putStrLn $ show $ servantToTS getFunction (Proxy :: Proxy SimpleAPI)
           types `shouldBe`
             [TSInterface "User"
               [TSField (FieldName "name") (TSPrimitiveType TSString)
