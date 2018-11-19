@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: fa19b052af1ce185a5506f13a1ffe8cd7ca20adfe7490f70d24d4cf72b204852
+-- hash: 880472c387147c6009ab0fa796cc0a4900555e3f3d0570fe25f6d0d03a9bb9ab
 
 name:           servant-ts
 version:        0.1.0.0
@@ -25,7 +25,6 @@ test-suite servant-ts-test
   other-modules:
       Spec
       Convert
-      Main
       TSFunctions
       APIs
       Paths_servant_ts

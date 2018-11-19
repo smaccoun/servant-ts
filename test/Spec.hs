@@ -17,20 +17,9 @@ servantTSSpec :: Spec
 servantTSSpec = do
   describe "base" $ do
     it "should test basic" $ do
-      let (asTS :: [Req TSType]) = servantToReqTS (Proxy :: Proxy SimpleAPI)
-          allTypes = sequence $ _reqReturnType <$> asTS
-      case allTypes of
-        Nothing -> error "Could not match api"
-        Just types -> do
-          putStrLn $ show asTS
-          putStrLn $ show $ toTypescript <$> types
-          putStrLn $ show types
-          putStrLn $ show $ servantToTS getFunction (Proxy :: Proxy SimpleAPI)
-          types `shouldBe`
-            [TSInterface "User"
-              [TSField (FieldName "name") (TSPrimitiveType TSString)
-              ,TSField (FieldName "age") (TSPrimitiveType TSNumber)
-              ,TSField (FieldName "isAdmin") (TSPrimitiveType TSBoolean)
-              ]
-            ]
-
+      let (asTS :: [Req (TSIntermediate Vanilla)]) = servantToReqTS (Proxy :: Proxy SimpleAPI)
+          allTypes :: [TSIntermediate Vanilla]
+          allTypes = fromMaybe [] $ sequence $ _reqReturnType <$> asTS
+          allDeclarations = fmap (declaration . toForeignType) allTypes
+          answer = ["interface User { \n  name : string\n  age : number\n  isAdmin : boolean\n}"]
+      allDeclarations `shouldBe` answer
