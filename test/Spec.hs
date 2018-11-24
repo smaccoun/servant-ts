@@ -21,6 +21,6 @@ servantTSSpec = do
         allTypes        = fromMaybe [] $ sequence $ _reqReturnType <$> asTS
         allDeclarations = fmap (declaration . toForeignType) allTypes
         answer =
-          [ "interface User { \n  name : string\n  age : number\n  isAdmin : boolean\n}"
+          [ "interface User { \n  name : string\n  age : number\n  isAdmin : boolean\n  hasMI : Option<string>\n}"
           ]
       allDeclarations `shouldBe` answer

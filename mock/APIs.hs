@@ -14,6 +14,7 @@ data User = User
     {name    :: Text
     ,age     :: Int
     ,isAdmin :: Bool
+    ,hasMI   :: Maybe Text
     } deriving (Generic, TypescriptType)
 
 
