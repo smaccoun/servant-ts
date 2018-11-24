@@ -16,22 +16,25 @@ import           Typescript.Internal.Intermediate.Generic (TypescriptType(..))
 data LangTypescript
 type TSVanilla = TSIntermediate Vanilla
 
-instance (TypescriptType a) => HasForeignType LangTypescript TSVanilla a where
+instance (TypescriptType a) => HasForeignType LangTypescript (TSIntermediate flavor) a where
   typeFor _ _ _ = toTSIntermediate (Proxy :: Proxy a)
 
-servantToTSVanilla ::
-          ( HasForeign LangTypescript TSVanilla api
-          , GenerateList TSVanilla (Foreign TSVanilla api))
-         => (Req TSVanilla -> Text)
-         -> Proxy api
-         -> [Text]
-servantToTSVanilla genTS proxyApi =
-    genTS <$> servantToReqTS proxyApi
+servantToTSVanilla
+  :: ( HasForeign LangTypescript (TSIntermediate flavor) api
+     , GenerateList (TSIntermediate flavor) (Foreign (TSIntermediate flavor) api)
+     )
+  => (Req (TSIntermediate flavor) -> Text)
+  -> Proxy api
+  -> Proxy flavor
+  -> [Text]
+servantToTSVanilla genTS proxyApi flavor = genTS <$> servantToReqTS flavor proxyApi
 
-servantToReqTS ::
-          ( HasForeign LangTypescript TSVanilla api
-          , GenerateList TSVanilla (Foreign TSVanilla api))
-         => Proxy api
-         -> [Req TSVanilla]
-servantToReqTS =
-  listFromAPI (Proxy :: Proxy LangTypescript) (Proxy :: Proxy TSVanilla)
+servantToReqTS
+  :: ( HasForeign LangTypescript (TSIntermediate flavor) api
+     , GenerateList (TSIntermediate flavor) (Foreign (TSIntermediate flavor) api)
+     )
+  => Proxy flavor
+  -> Proxy api
+  -> [Req (TSIntermediate flavor)]
+servantToReqTS _ =
+  listFromAPI (Proxy :: Proxy LangTypescript) (Proxy :: Proxy (TSIntermediate flavor))

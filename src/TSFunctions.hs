@@ -28,16 +28,17 @@ printTSTypedVar (TSTypedVar name' type') = name' <> " : " <> type'
 newtype TSArg = TSArg {getTypedVar :: TSTypedVar}
 
 printArgs :: [TSArg] -> Text
-printArgs tsArgs' = T.intercalate "," $ (printTSTypedVar . getTypedVar) <$> tsArgs'
+printArgs tsArgs' =
+  T.intercalate "," $ (printTSTypedVar . getTypedVar) <$> tsArgs'
 
 printTSFunction :: TSFunctionConfig -> Text
 printTSFunction (TSFunctionConfig tsFuncName' tsArgs' tsReturnType' body') =
-    "function "
-  <> tsFuncName'
-  <> "("
-  <> printArgs tsArgs'
-  <> "): "
-  <> tsReturnType'
-  <> " {\n"
-  <> body'
-  <> "}"
+  "function "
+    <> tsFuncName'
+    <> "("
+    <> printArgs tsArgs'
+    <> "): "
+    <> tsReturnType'
+    <> " {\n"
+    <> body'
+    <> "}\n"
