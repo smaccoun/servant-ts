@@ -18,4 +18,5 @@ data User = User
     } deriving (Generic, TypescriptType)
 
 
-type SimpleAPI = "users" :> Get '[JSON] User
+type SimpleAPI = "user" :> Get '[JSON] [User]
+              :<|> "user" :> Capture "userId" Int :> Get '[JSON] User

@@ -42,3 +42,24 @@ printTSFunction (TSFunctionConfig tsFuncName' tsArgs' tsReturnType' body') =
     <> " {\n"
     <> body'
     <> "}\n"
+
+reqToTSFunction
+  :: (IsForeignType (TSIntermediate flavor))
+  => Req (TSIntermediate flavor)
+  -> TSFunctionConfig
+reqToTSFunction req = TSFunctionConfig
+  { _tsFuncName   = T.intercalate "" $ unFunctionName $ req ^. reqFuncName
+  , _tsArgs       = fmap (reqArgToTSArg . _headerArg) $ req ^. reqHeaders
+  , _tsReturnType = fromMaybe "void"
+    $ fmap (refName . toForeignType) (req ^. reqReturnType)
+  , _body         = ""
+  }
+
+reqArgToTSArg
+  :: (IsForeignType (TSIntermediate flavor))
+  => Arg (TSIntermediate flavor)
+  -> TSArg
+reqArgToTSArg (Arg argName' argType') = TSArg $ TSTypedVar
+  { varName = unPathSegment argName'
+  , varType = refName . toForeignType $ argType'
+  }
