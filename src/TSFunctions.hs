@@ -1,4 +1,3 @@
-{-# LANGUAGE DeriveAnyClass #-}
 module TSFunctions where
 
 import           Control.Lens
@@ -31,7 +30,7 @@ newtype TSArg = TSArg {getTypedVar :: TSTypedVar}
 
 printArgs :: [TSArg] -> Text
 printArgs tsArgs' =
-  T.intercalate "," $ (printTSTypedVar . getTypedVar) <$> tsArgs'
+  T.intercalate "," $ printTSTypedVar . getTypedVar <$> tsArgs'
 
 printTSFunction :: TSFunctionConfig -> Text
 printTSFunction (TSFunctionConfig tsFuncName' tsArgs' tsReturnType' body') =
@@ -52,8 +51,9 @@ reqToTSFunction
 reqToTSFunction req = TSFunctionConfig
   { _tsFuncName   = reqToTSFunctionName req
   , _tsArgs       = fmap (reqArgToTSArg . _headerArg) $ req ^. reqHeaders
-  , _tsReturnType = fromMaybe "void"
-    $ fmap (asPromise . refName . toForeignType) (req ^. reqReturnType)
+  , _tsReturnType = maybe "void"
+                          (asPromise . refName . toForeignType)
+                          (req ^. reqReturnType)
   , _body         = "return fetch(\\`" <> getReqUrl req <> "\\`)"
   }
 
@@ -69,7 +69,7 @@ getReqUrl req = T.intercalate "/" (fmap handleSegment $ req ^. reqUrl . path)
     -> Text
   handleSegment seg = case unSegment seg of
     Static (PathSegment ps) -> ps
-    Cap arg -> "${" <> ((varName . getTypedVar . reqArgToTSArg) arg) <> "}"
+    Cap arg -> "${" <> (varName . getTypedVar . reqArgToTSArg) arg <> "}"
 
 
 reqArgToTSArg
@@ -93,7 +93,7 @@ reqToTSFunctionName req = combineWords $ unFunctionName $ req ^. reqFuncName
   combineWords (x : xs) = x <> combineWords (fmap capFirstLetter xs)
 
   capFirstLetter :: Text -> Text
-  capFirstLetter = (T.pack . over _head toUpper . T.unpack)
+  capFirstLetter = T.pack . over _head toUpper . T.unpack
 
 asPromise :: Text -> Text
 asPromise t = "Promise<" <> t <> ">"

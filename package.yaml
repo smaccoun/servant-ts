@@ -19,6 +19,8 @@ dependencies:
   - text
   - lens
 
+library:
+  source-dirs: src
 
 tests:
   servant-ts-test:

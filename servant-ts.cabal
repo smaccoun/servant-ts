@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 880472c387147c6009ab0fa796cc0a4900555e3f3d0570fe25f6d0d03a9bb9ab
+-- hash: b54671932cb7c9ead59dfc255cdc0091b105ffc7836e713239c3d296d7664f8c
 
 name:           servant-ts
 version:        0.1.0.0
@@ -18,6 +18,24 @@ cabal-version:  >= 1.10
 extra-source-files:
     README.md
 data-dir:       mock
+
+library
+  exposed-modules:
+      Convert
+      TSFunctions
+  other-modules:
+      Paths_servant_ts
+  hs-source-dirs:
+      src
+  default-extensions: ConstraintKinds DataKinds DeriveGeneric FlexibleContexts FlexibleInstances GADTs GeneralizedNewtypeDeriving KindSignatures MultiParamTypeClasses OverloadedStrings PolyKinds QuasiQuotes RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving TemplateHaskell TypeApplications TypeFamilies TypeOperators UndecidableInstances
+  build-depends:
+      aeson-generic-ts
+    , base >=4.7 && <5
+    , lens
+    , servant
+    , servant-foreign
+    , text
+  default-language: Haskell2010
 
 test-suite servant-ts-test
   type: exitcode-stdio-1.0

@@ -14,7 +14,7 @@ import           Test.Hspec
 import           Typescript
 
 servantTSSpec :: Spec
-servantTSSpec = do
+servantTSSpec =
   describe "base" $ do
     it "should test basic" $ do
       let
