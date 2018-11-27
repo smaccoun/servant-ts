@@ -53,9 +53,24 @@ reqToTSFunction req = TSFunctionConfig
   { _tsFuncName   = reqToTSFunctionName req
   , _tsArgs       = fmap (reqArgToTSArg . _headerArg) $ req ^. reqHeaders
   , _tsReturnType = fromMaybe "void"
-    $ fmap (refName . toForeignType) (req ^. reqReturnType)
-  , _body         = ""
+    $ fmap (asPromise . refName . toForeignType) (req ^. reqReturnType)
+  , _body         = "return fetch(\\`" <> getReqUrl req <> "\\`)"
   }
+
+getReqUrl
+  :: (IsForeignType (TSIntermediate flavor))
+  => Req (TSIntermediate flavor)
+  -> Text
+getReqUrl req = T.intercalate "/" (fmap handleSegment $ req ^. reqUrl . path)
+ where
+  handleSegment
+    :: (IsForeignType (TSIntermediate flavor))
+    => Segment (TSIntermediate flavor)
+    -> Text
+  handleSegment seg = case unSegment seg of
+    Static (PathSegment ps) -> ps
+    Cap arg -> "${" <> ((varName . getTypedVar . reqArgToTSArg) arg) <> "}"
+
 
 reqArgToTSArg
   :: (IsForeignType (TSIntermediate flavor))
@@ -79,3 +94,6 @@ reqToTSFunctionName req = combineWords $ unFunctionName $ req ^. reqFuncName
 
   capFirstLetter :: Text -> Text
   capFirstLetter = (T.pack . over _head toUpper . T.unpack)
+
+asPromise :: Text -> Text
+asPromise t = "Promise<" <> t <> ">"
