@@ -33,7 +33,7 @@ servantTSSpec = do
       allFunctions `shouldBe` answer
  where
   answer =
-    [ "function getuser(): User {\n}\n"
-    , "function getuserbyuserId(): User {\n}\n"
+    [ "function getUser(): User {\n}\n"
+    , "function getUserByUserId(): User {\n}\n"
     ]
 
