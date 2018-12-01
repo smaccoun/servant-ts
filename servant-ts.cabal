@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: b54671932cb7c9ead59dfc255cdc0091b105ffc7836e713239c3d296d7664f8c
+-- hash: f0be9f64b79959ca3fc340361c1a032ec1260ef6c8fe95c6b9f7600fe3f9ca1d
 
 name:           servant-ts
 version:        0.1.0.0
@@ -32,6 +32,29 @@ library
       aeson-generic-ts
     , base >=4.7 && <5
     , lens
+    , prettyprinter
+    , servant
+    , servant-foreign
+    , text
+  default-language: Haskell2010
+
+executable servant-ts-cli
+  main-is: Main.hs
+  other-modules:
+      Convert
+      TSFunctions
+      APIs
+      Paths_servant_ts
+  hs-source-dirs:
+      cli
+      src
+      mock
+  default-extensions: ConstraintKinds DataKinds DeriveGeneric FlexibleContexts FlexibleInstances GADTs GeneralizedNewtypeDeriving KindSignatures MultiParamTypeClasses OverloadedStrings PolyKinds QuasiQuotes RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving TemplateHaskell TypeApplications TypeFamilies TypeOperators UndecidableInstances
+  build-depends:
+      aeson-generic-ts
+    , base >=4.7 && <5
+    , lens
+    , prettyprinter
     , servant
     , servant-foreign
     , text
@@ -56,6 +79,7 @@ test-suite servant-ts-test
     , base >=4.7 && <5
     , hspec
     , lens
+    , prettyprinter
     , servant
     , servant-foreign
     , text

@@ -33,7 +33,7 @@ servantTSSpec =
       allFunctions `shouldBe` answer
  where
   answer =
-    [ "function getUser(): Promise<User> {\nreturn fetch(\\`user\\`)}\n"
-    , "function getUserByUserId(): Promise<User> {\nreturn fetch(\\`user/${userId}\\`)}\n"
+    [ "function getUser(): Promise<User> {\n  return fetch(\\`user\\`)\n}"
+    , "function getUserByUserId(): Promise<User> {\n  return fetch(\\`user/${userId}\\`)\n}"
     ]
 

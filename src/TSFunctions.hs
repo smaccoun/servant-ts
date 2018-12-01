@@ -42,7 +42,7 @@ printTSFunction (TSFunctionConfig tsFuncName' tsArgs' tsReturnType' body') =
     <> tsReturnType'
     <> " {\n"
     <> body'
-    <> "}\n"
+    <> "\n}"
 
 reqToTSFunction
   :: (IsForeignType (TSIntermediate flavor))
@@ -54,7 +54,7 @@ reqToTSFunction req = TSFunctionConfig
   , _tsReturnType = maybe "void"
                           (asPromise . refName . toForeignType)
                           (req ^. reqReturnType)
-  , _body         = "return fetch(\\`" <> getReqUrl req <> "\\`)"
+  , _body         = "  return fetch(\\`" <> getReqUrl req <> "\\`)"
   }
 
 getReqUrl

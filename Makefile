@@ -9,6 +9,7 @@ setup:
 .PHONY: build
 build:
 	stack build --test --no-run-tests
+	stack exec servant-ts-cli
 
 .PHONY: test
 test:

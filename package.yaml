@@ -18,6 +18,15 @@ dependencies:
   - servant-foreign
   - text
   - lens
+  - prettyprinter
+
+executables:
+  servant-ts-cli:
+    main: Main.hs
+    source-dirs:
+      - cli
+      - src
+      - mock
 
 library:
   source-dirs: src
