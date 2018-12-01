@@ -8,17 +8,23 @@ It is technically usable right now, but the API is fast moving and the configura
 
 # Example
 
-Given the following Servant API
+Consider the following common User API
 
 ```haskell
-type SimpleAPI = "user" :> Get '[JSON] [User]
+
+type UserAPI = "user" :> Get '[JSON] [User]
               :<|> "user" :> Capture "userId" Int :> Get '[JSON] User
+
+data User = User
+    {name    :: Text
+    ,age     :: Int
+    ,isAdmin :: Bool
+    ,hasMI   :: Maybe Text
+    } deriving (Generic, TypescriptType)
 
 ```
 
-You can specify a flavor (in this case FpTs) to generate function and type declarations
-
-The declaration file would look like
+Given a flavor configuration you can auto generate the following type and function declaration files for this API.
 
 ```Typescript
 // Declarations
@@ -30,8 +36,6 @@ interface User {
   hasMI : Option<string>
 }
 ```
-
-And the function file could look like
 
 ```Typescript
 // Function Declarations
