@@ -22,11 +22,11 @@ data TSFunctionConfig =
     ,_body         :: Text
     }
 
-data TSTypedVar = TSTypedVar {varName :: Text, varType :: Text}
+data TSTypedVar = TSTypedVar {varName :: Text, varType :: Text} deriving (Show)
 
 printTSTypedVar (TSTypedVar name' type') = name' <> " : " <> type'
 
-newtype TSArg = TSArg {getTypedVar :: TSTypedVar}
+newtype TSArg = TSArg {getTypedVar :: TSTypedVar} deriving (Show)
 
 printArgs :: [TSArg] -> Text
 printArgs tsArgs' =
@@ -44,18 +44,29 @@ printTSFunction (TSFunctionConfig tsFuncName' tsArgs' tsReturnType' body') =
     <> body'
     <> "\n}"
 
+instance (IsForeignType (TSIntermediate flavor)) => Show (TSIntermediate flavor) where
+  show f = T.unpack $ refName $ toForeignType f
+
 reqToTSFunction
   :: (IsForeignType (TSIntermediate flavor))
   => Req (TSIntermediate flavor)
   -> TSFunctionConfig
 reqToTSFunction req = TSFunctionConfig
   { _tsFuncName   = reqToTSFunctionName req
-  , _tsArgs       = fmap (reqArgToTSArg . _headerArg) $ req ^. reqHeaders
+  , _tsArgs       = reqToTSFunctionArgs req
   , _tsReturnType = maybe "void"
                           (asPromise . refName . toForeignType)
                           (req ^. reqReturnType)
   , _body         = "  return fetch(\\`" <> getReqUrl req <> "\\`)"
   }
+
+reqToTSFunctionArgs :: (IsForeignType (TSIntermediate flavor))
+  => Req (TSIntermediate flavor)
+  -> [TSArg]
+reqToTSFunctionArgs req =
+  map (reqArgToTSArg . captureArg)
+    . filter isCapture
+    $ req ^. reqUrl.path
 
 getReqUrl
   :: (IsForeignType (TSIntermediate flavor))

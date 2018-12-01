@@ -15,9 +15,13 @@ import Data.Text.Prettyprint.Doc
 
 
 main :: IO ()
-main = print $ pretty allFunctions
+main = do
+ print $ pretty allFunctions
+ print $ pretty allDeclarations
  where
   asTS = servantToReqTS (Proxy :: Proxy FpTs) (Proxy :: Proxy SimpleAPI)
   allFunctions =
-    Data.Text.intercalate "\n" $ fmap (printTSFunction . reqToTSFunction) asTS
+    Data.Text.intercalate "\n\n" $ fmap (printTSFunction . reqToTSFunction) asTS
+  allTypes = fromMaybe [] $ sequence $ _reqReturnType <$> asTS
+  allDeclarations = Data.Text.intercalate "\n\n" $ fmap (declaration . toForeignType) allTypes
 

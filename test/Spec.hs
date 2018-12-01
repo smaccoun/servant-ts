@@ -1,6 +1,7 @@
 module Spec where
 
 import           Convert
+import           Control.Lens
 import           Data.Maybe      (fromMaybe)
 import           Data.Proxy
 import           APIs
@@ -14,26 +15,24 @@ import           Test.Hspec
 import           Typescript
 
 servantTSSpec :: Spec
-servantTSSpec =
-  describe "base" $ do
-    it "should test basic" $ do
-      let
-        asTS = servantToReqTS (Proxy :: Proxy FpTs) (Proxy :: Proxy SimpleAPI)
-        allTypes = fromMaybe [] $ sequence $ _reqReturnType <$> asTS
-        allDeclarations = fmap (declaration . toForeignType) allTypes
-        answer =
-          [ "Array<User>"
-          , "interface User { \n  name : string\n  age : number\n  isAdmin : boolean\n  hasMI : Option<string>\n}"
-          ]
-      allDeclarations `shouldBe` answer
-    it "should print out correct functions" $ do
-      let asTS =
-            servantToReqTS (Proxy :: Proxy FpTs) (Proxy :: Proxy SimpleAPI)
-          allFunctions = fmap (printTSFunction . reqToTSFunction) asTS
-      allFunctions `shouldBe` answer
+servantTSSpec = describe "base" $ do
+  it "should test basic" $ do
+    let
+      asTS = servantToReqTS (Proxy :: Proxy FpTs) (Proxy :: Proxy SimpleAPI)
+      allTypes = fromMaybe [] $ sequence $ _reqReturnType <$> asTS
+      allDeclarations = fmap (declaration . toForeignType) allTypes
+      answer =
+        [ "Array<User>"
+        , "interface User { \n  name : string\n  age : number\n  isAdmin : boolean\n  hasMI : Option<string>\n}"
+        ]
+    allDeclarations `shouldBe` answer
+  it "should print out correct functions" $ do
+    let asTS = servantToReqTS (Proxy :: Proxy FpTs) (Proxy :: Proxy SimpleAPI)
+        allFunctions = fmap (printTSFunction . reqToTSFunction) asTS
+    allFunctions `shouldBe` answer
  where
   answer =
     [ "function getUser(): Promise<User> {\n  return fetch(\\`user\\`)\n}"
-    , "function getUserByUserId(): Promise<User> {\n  return fetch(\\`user/${userId}\\`)\n}"
+    , "function getUserByUserId(userId : number): Promise<User> {\n  return fetch(\\`user/${userId}\\`)\n}"
     ]
 
