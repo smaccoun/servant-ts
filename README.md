@@ -23,8 +23,6 @@ The declaration file would look like
 ```Typescript
 // Declarations
 
-type Users = Array<User>
-
 interface User { 
   name : string
   age : number
@@ -42,7 +40,7 @@ function getUser(): Promise<User> {
   return fetch(`${user}`)
 }
 
-function getUserByUserId(userId : number): Promise<User> {
+function getUserByUserId(userId : number): Promise<Array<User>> {
   return fetch(`user/${userId}`)
 }
 ```

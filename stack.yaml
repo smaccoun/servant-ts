@@ -4,4 +4,4 @@ resolver: lts-12.14
 extra-deps: true
 extra-deps:
 - git: https://github.com/smaccoun/aeson-generic-ts.git
-  commit: 42153bf1bfa8c0f8427dd2410b5b73a8ce597b45
+  commit: 0381cbda2845d4cb090569c4d813cf75c5bd11ac
