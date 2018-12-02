@@ -9,8 +9,8 @@ import Control.Lens
 mkBody
   :: (IsForeignType (TSIntermediate flavor))
   => Req (TSIntermediate flavor)
-  -> Text
-mkBody req = "  return fetch(\\`" <> getReqUrl req <> "\\`)"
+  -> TSFunctionBody
+mkBody req = TSFunctionBody ["return fetch(\\`" <> getReqUrl req <> "\\`)"]
 
 reqToTSFunction
   :: (IsForeignType (TSIntermediate flavor))

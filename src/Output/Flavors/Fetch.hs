@@ -6,12 +6,6 @@ import           Servant.Foreign
 import Data.Text
 import Control.Lens
 
-mkBody
-  :: (IsForeignType (TSIntermediate flavor))
-  => Req (TSIntermediate flavor)
-  -> Text
-mkBody req = "  return fetch(\\`" <> getReqUrl req <> "\\`)"
-
 reqToTSFunction
   :: (IsForeignType (TSIntermediate flavor))
   => Req (TSIntermediate flavor)
@@ -24,3 +18,9 @@ reqToTSFunction req = TSFunctionConfig
                           (req ^. reqReturnType)
   , _body         = mkBody req
   }
+
+mkBody
+  :: (IsForeignType (TSIntermediate flavor))
+  => Req (TSIntermediate flavor)
+  -> TSFunctionBody
+mkBody req = TSFunctionBody ["return fetch(\\`" <> withDefaultUrlFunc $ getReqUrl req <> "\\`)"]

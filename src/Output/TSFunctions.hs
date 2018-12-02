@@ -11,6 +11,7 @@ import qualified Data.Text       as T
 import           Debug.Trace
 import           GHC.Generics
 import           Servant.API
+import Data.Text.Prettyprint.Doc
 import           Servant.Foreign
 import           Typescript
 
@@ -19,7 +20,7 @@ data TSFunctionConfig =
     {_tsFuncName   :: Text
     ,_tsArgs       :: [TSArg]
     ,_tsReturnType :: Text
-    ,_body         :: Text
+    ,_body         :: TSFunctionBody
     }
 
 data TSTypedVar = TSTypedVar {varName :: Text, varType :: Text} deriving (Show)
@@ -28,24 +29,25 @@ printTSTypedVar (TSTypedVar name' type') = name' <> " : " <> type'
 
 newtype TSArg = TSArg {getTypedVar :: TSTypedVar} deriving (Show)
 
+newtype TSFunctionBody = TSFunctionBody {getTSFunctionBody :: [Text]}
+
 printArgs :: [TSArg] -> Text
 printArgs tsArgs' =
   T.intercalate "," $ printTSTypedVar . getTypedVar <$> tsArgs'
 
 printTSFunction :: TSFunctionConfig -> Text
 printTSFunction (TSFunctionConfig tsFuncName' tsArgs' tsReturnType' body') =
-  "function "
-    <> tsFuncName'
-    <> "("
-    <> printArgs tsArgs'
-    <> "): "
-    <> tsReturnType'
-    <> " {\n"
-    <> body'
-    <> "\n}"
-
-instance (IsForeignType (TSIntermediate flavor)) => Show (TSIntermediate flavor) where
-  show f = T.unpack $ refName $ toForeignType f
+  T.pack $ show $ vsep [pretty funcDeclareLine, printBody, pretty ("}" :: Text)]
+ where
+  funcDeclareLine =
+    "function "
+      <> tsFuncName'
+      <> "("
+      <> printArgs tsArgs'
+      <> "): "
+      <> tsReturnType'
+      <> " {"
+  printBody = indent 2 $ vsep (pretty <$> getTSFunctionBody body')
 
 
 reqToTSFunctionArgs
@@ -95,3 +97,6 @@ reqToTSFunctionName req = combineWords $ unFunctionName $ req ^. reqFuncName
 
 asPromise :: Text -> Text
 asPromise t = "Promise<" <> t <> ">"
+
+withDefaultUrlFunc :: Text -> Text
+withDefaultUrlFunc t = "withRemoteBaseUrl(" <> t <> ")"
