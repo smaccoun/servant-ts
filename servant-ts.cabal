@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 76159ffb5551a6b1937bbf378f2ee41b2b4d581e3bbe523ee634c6a8d8066cdf
+-- hash: f566799a627dceb5985289c2fb447d98a15011ecf5a81ac99febebe488a28ffb
 
 name:           servant-ts
 version:        0.1.0.0
@@ -23,7 +23,7 @@ library
   exposed-modules:
       Convert
       Output.FunctionDoc
-      TSFunctions
+      Output.TSFunctions
   other-modules:
       Paths_servant_ts
   hs-source-dirs:
@@ -44,7 +44,7 @@ executable servant-ts-cli
   other-modules:
       Convert
       Output.FunctionDoc
-      TSFunctions
+      Output.TSFunctions
       APIs
       Paths_servant_ts
   hs-source-dirs:
@@ -69,7 +69,7 @@ test-suite servant-ts-test
       Spec
       Convert
       Output.FunctionDoc
-      TSFunctions
+      Output.TSFunctions
       APIs
       Paths_servant_ts
   hs-source-dirs:

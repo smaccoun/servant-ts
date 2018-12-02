@@ -7,7 +7,7 @@ import           Data.Text
 import qualified Data.Text                          as T
 import           GHC.Generics
 import           Servant.Foreign
-import           TSFunctions
+import           Output.TSFunctions
 import           Typescript
 import           Typescript.Internal.Output.Foreign.Class
 import           Typescript.Internal.Intermediate.Generic (TypescriptType(..))

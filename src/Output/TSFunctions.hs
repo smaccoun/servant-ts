@@ -1,4 +1,4 @@
-module TSFunctions where
+module Output.TSFunctions where
 
 import           Control.Lens
 import Data.Text.Strict.Lens

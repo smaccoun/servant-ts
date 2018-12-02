@@ -6,7 +6,7 @@ import           Data.Maybe      (fromMaybe)
 import           Data.Proxy
 import           APIs
 import Data.Text
-import TSFunctions
+import Output.TSFunctions
 import           Servant.API
 import           Servant.Foreign (Foreign, GenerateList, HasForeign,
                                   HasForeignType, Req, listFromAPI, typeFor,

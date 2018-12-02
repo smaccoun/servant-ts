@@ -41,11 +41,11 @@ interface User {
 // Function Declarations
 
 function getUser(): Promise<User> {
-  return fetch(`${user}`)
+  return fetch(withBaseUrl(`user`))
 }
 
 function getUserByUserId(userId : number): Promise<Array<User>> {
-  return fetch(`user/${userId}`)
+  return fetch(withBaseUrl(`user/${userId}`))
 }
 ```
 
