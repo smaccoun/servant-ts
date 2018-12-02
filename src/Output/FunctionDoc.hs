@@ -15,8 +15,9 @@ import Data.Text.Prettyprint.Doc
 apiToFunctionDoc
   :: (IsForeignType (TSIntermediate flavor))
   => [Req (TSIntermediate flavor)]
+  -> (Req (TSIntermediate flavor) -> TSFunctionConfig)
   -> Doc ann
-apiToFunctionDoc apiReqs = mkFunctionDoc $ fmap reqToTSFunction apiReqs
+apiToFunctionDoc apiReqs reqToTSFunction' = mkFunctionDoc $ fmap reqToTSFunction' apiReqs
 
 mkFunctionDoc :: [TSFunctionConfig] -> Doc ann
 mkFunctionDoc tsFunctions = vsep $ fmap (pretty . printTSFunction) tsFunctions

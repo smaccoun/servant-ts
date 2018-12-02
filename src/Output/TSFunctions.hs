@@ -47,26 +47,13 @@ printTSFunction (TSFunctionConfig tsFuncName' tsArgs' tsReturnType' body') =
 instance (IsForeignType (TSIntermediate flavor)) => Show (TSIntermediate flavor) where
   show f = T.unpack $ refName $ toForeignType f
 
-reqToTSFunction
-  :: (IsForeignType (TSIntermediate flavor))
-  => Req (TSIntermediate flavor)
-  -> TSFunctionConfig
-reqToTSFunction req = TSFunctionConfig
-  { _tsFuncName   = reqToTSFunctionName req
-  , _tsArgs       = reqToTSFunctionArgs req
-  , _tsReturnType = maybe "void"
-                          (asPromise . refName . toForeignType)
-                          (req ^. reqReturnType)
-  , _body         = "  return fetch(\\`" <> getReqUrl req <> "\\`)"
-  }
 
-reqToTSFunctionArgs :: (IsForeignType (TSIntermediate flavor))
+reqToTSFunctionArgs
+  :: (IsForeignType (TSIntermediate flavor))
   => Req (TSIntermediate flavor)
   -> [TSArg]
 reqToTSFunctionArgs req =
-  map (reqArgToTSArg . captureArg)
-    . filter isCapture
-    $ req ^. reqUrl.path
+  map (reqArgToTSArg . captureArg) . filter isCapture $ req ^. reqUrl . path
 
 getReqUrl
   :: (IsForeignType (TSIntermediate flavor))

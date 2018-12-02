@@ -13,16 +13,17 @@ import           Servant.Foreign (Foreign, GenerateList, HasForeign,
 import           Typescript
 import Data.Text.Prettyprint.Doc
 import Output.FunctionDoc
+import qualified Output.RequestFlavors.Fetch as Fetch
 
 
 main :: IO ()
 main = do
-  print $ apiToFunctionDoc asTS
+  print $ apiToFunctionDoc asTS Fetch.reqToTSFunction
   print $ pretty allDeclarations
  where
   asTS = servantToReqTS (Proxy :: Proxy FpTs) (Proxy :: Proxy SimpleAPI)
   allFunctions =
-    Data.Text.intercalate "\n\n" $ fmap (printTSFunction . reqToTSFunction) asTS
+    Data.Text.intercalate "\n\n" $ fmap (printTSFunction . Fetch.reqToTSFunction) asTS
   allTypes = fromMaybe [] $ sequence $ _reqReturnType <$> asTS
   allDeclarations =
     Data.Text.intercalate "\n\n" $ fmap (declaration . toForeignType) allTypes
