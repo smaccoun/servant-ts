@@ -1,19 +1,19 @@
 module Spec where
 
-import           Convert
+import           ServantTS.Convert
 import           Control.Lens
 import           Data.Maybe      (fromMaybe)
 import           Data.Proxy
 import           APIs
 import Data.Text
-import Output.TSFunctions
+import ServantTS.Output.TSFunctions
 import           Servant.API
 import           Servant.Foreign (Foreign, GenerateList, HasForeign,
                                   HasForeignType, Req, listFromAPI, typeFor,
                                   _reqReturnType)
 import           Test.Hspec
 import           Typescript
-import qualified Output.RequestFlavors.Fetch as Fetch
+import qualified ServantTS.Output.RequestFlavors.Fetch as Fetch
 
 servantTSSpec :: Spec
 servantTSSpec = describe "base" $ do

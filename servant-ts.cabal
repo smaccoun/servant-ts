@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: fba4687d935aa71c21833d50a213f0e47662bdca803f7aeaa64dd077c9c64c0d
+-- hash: d66b5bf4f5463b8973c54bbd6cc25781a3b037c018b5b7b952988e8ee54cdf49
 
 name:           servant-ts
 version:        0.1.0.0
@@ -21,11 +21,12 @@ data-dir:       mock
 
 library
   exposed-modules:
-      Convert
-      Output.FunctionDoc
-      Output.RequestFlavors.Class
-      Output.RequestFlavors.Fetch
-      Output.TSFunctions
+      ServantTS
+      ServantTS.Convert
+      ServantTS.Output.FunctionDoc
+      ServantTS.Output.RequestFlavors.Class
+      ServantTS.Output.RequestFlavors.Fetch
+      ServantTS.Output.TSFunctions
   other-modules:
       Paths_servant_ts
   hs-source-dirs:
@@ -44,11 +45,12 @@ library
 executable servant-ts-cli
   main-is: Main.hs
   other-modules:
-      Convert
-      Output.FunctionDoc
-      Output.RequestFlavors.Class
-      Output.RequestFlavors.Fetch
-      Output.TSFunctions
+      ServantTS
+      ServantTS.Convert
+      ServantTS.Output.FunctionDoc
+      ServantTS.Output.RequestFlavors.Class
+      ServantTS.Output.RequestFlavors.Fetch
+      ServantTS.Output.TSFunctions
       APIs
       Paths_servant_ts
   hs-source-dirs:
@@ -71,11 +73,12 @@ test-suite servant-ts-test
   main-is: Main.hs
   other-modules:
       Spec
-      Convert
-      Output.FunctionDoc
-      Output.RequestFlavors.Class
-      Output.RequestFlavors.Fetch
-      Output.TSFunctions
+      ServantTS
+      ServantTS.Convert
+      ServantTS.Output.FunctionDoc
+      ServantTS.Output.RequestFlavors.Class
+      ServantTS.Output.RequestFlavors.Fetch
+      ServantTS.Output.TSFunctions
       APIs
       Paths_servant_ts
   hs-source-dirs:

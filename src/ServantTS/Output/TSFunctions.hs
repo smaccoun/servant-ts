@@ -1,4 +1,4 @@
-module Output.TSFunctions where
+module ServantTS.Output.TSFunctions where
 
 import           Control.Lens
 import Data.Text.Strict.Lens
@@ -14,7 +14,7 @@ import           Servant.API
 import Data.Text.Prettyprint.Doc
 import           Servant.Foreign
 import           Typescript
-import Output.RequestFlavors.Class
+import ServantTS.Output.RequestFlavors.Class
 
 data TSFunctionConfig =
   TSFunctionConfig

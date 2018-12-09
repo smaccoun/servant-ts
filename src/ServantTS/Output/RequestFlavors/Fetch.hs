@@ -1,12 +1,12 @@
-module Output.RequestFlavors.Fetch where
+module ServantTS.Output.RequestFlavors.Fetch where
 
-import Output.TSFunctions
+import ServantTS.Output.TSFunctions
 import           Typescript
 import           Servant.Foreign
 import Data.Proxy
 import Data.Text
 import Control.Lens
-import Output.RequestFlavors.Class
+import ServantTS.Output.RequestFlavors.Class
 
 data Fetch
 

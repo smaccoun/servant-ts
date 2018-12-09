@@ -1,10 +1,10 @@
-module Output.FunctionDoc where
+module ServantTS.Output.FunctionDoc where
 
-import           Convert
+import           ServantTS.Convert
 import           Data.Maybe      (fromMaybe)
 import           Data.Proxy
 import Data.Text
-import Output.TSFunctions
+import ServantTS.Output.TSFunctions
 import           Servant.API
 import           Servant.Foreign (Foreign, GenerateList, HasForeign,
                                   HasForeignType, Req, listFromAPI, typeFor,
@@ -17,7 +17,8 @@ apiToFunctionDoc
   => [Req (TSIntermediate flavor)]
   -> (Req (TSIntermediate flavor) -> TSFunctionConfig)
   -> Doc ann
-apiToFunctionDoc apiReqs reqToTSFunction' = mkFunctionDoc $ fmap reqToTSFunction' apiReqs
+apiToFunctionDoc apiReqs reqToTSFunction' =
+  mkFunctionDoc $ fmap reqToTSFunction' apiReqs
 
 mkFunctionDoc :: [TSFunctionConfig] -> Doc ann
 mkFunctionDoc tsFunctions = vsep $ fmap (pretty . printTSFunction) tsFunctions

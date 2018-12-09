@@ -1,4 +1,4 @@
-module Convert where
+module ServantTS.Convert where
 
 import           Control.Lens
 import           Data.Maybe
@@ -7,7 +7,7 @@ import           Data.Text
 import qualified Data.Text                          as T
 import           GHC.Generics
 import           Servant.Foreign
-import           Output.TSFunctions
+import           ServantTS.Output.TSFunctions
 import           Typescript
 import           Typescript.Internal.Output.Foreign.Class
 import           Typescript.Internal.Intermediate.Generic (TypescriptType(..))

@@ -1,5 +1,5 @@
 {-# LANGUAGE AllowAmbiguousTypes #-}
-module Output.RequestFlavors.Class where
+module ServantTS.Output.RequestFlavors.Class where
 
 import Data.Text
 import Typescript
