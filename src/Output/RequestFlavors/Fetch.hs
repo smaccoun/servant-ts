@@ -3,14 +3,15 @@ module Output.RequestFlavors.Fetch where
 import Output.TSFunctions
 import           Typescript
 import           Servant.Foreign
+import Data.Proxy
 import Data.Text
 import Control.Lens
+import Output.RequestFlavors.Class
 
-mkBody
-  :: (IsForeignType (TSIntermediate flavor))
-  => Req (TSIntermediate flavor)
-  -> TSFunctionBody
-mkBody req = TSFunctionBody ["return fetch(\\`" <> getReqUrl req <> "\\`)"]
+data Fetch
+
+instance TSRequestMethod Fetch where
+  printTSReqMethod = "fetch"
 
 reqToTSFunction
   :: (IsForeignType (TSIntermediate flavor))
@@ -22,5 +23,6 @@ reqToTSFunction req = TSFunctionConfig
   , _tsReturnType = maybe "void"
                           (asPromise . refName . toForeignType)
                           (req ^. reqReturnType)
-  , _body         = mkBody req
+  , _body         = mkDefaultBody req (Proxy @Fetch) withDefaultUrlFunc
   }
+

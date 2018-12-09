@@ -14,6 +14,7 @@ import           Servant.API
 import Data.Text.Prettyprint.Doc
 import           Servant.Foreign
 import           Typescript
+import Output.RequestFlavors.Class
 
 data TSFunctionConfig =
   TSFunctionConfig
@@ -99,4 +100,22 @@ asPromise :: Text -> Text
 asPromise t = "Promise<" <> t <> ">"
 
 withDefaultUrlFunc :: Text -> Text
-withDefaultUrlFunc t = "withRemoteBaseUrl(" <> t <> ")"
+withDefaultUrlFunc t = "withRemoteBaseUrl(\\`" <> t <> "\\`)"
+
+
+type TSBaseUrlMethod = Text -> Text
+
+mkDefaultBody
+  :: forall flavor trm . (IsForeignType (TSIntermediate flavor), TSRequestMethod trm)
+  => Req (TSIntermediate flavor)
+  -> Proxy trm
+  -> TSBaseUrlMethod
+  -> TSFunctionBody
+mkDefaultBody req tsReqMethod tsBaseUrlFunc =
+  TSFunctionBody
+    ["return "
+      <> printTSReqMethod @trm
+      <> "("
+      <> (tsBaseUrlFunc $ getReqUrl req)
+      <> ")"
+    ]

@@ -14,7 +14,6 @@ build:
 .PHONY: test
 test:
 	stack test
-	hlint .
 
 .PHONY: lint
 lint:

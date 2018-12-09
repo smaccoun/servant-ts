@@ -33,7 +33,7 @@ servantTSSpec = describe "base" $ do
     allFunctions `shouldBe` answer
  where
   answer =
-    [ "function getUser(): Promise<Array<User>> {\n  return fetch(\\`user\\`)\n}"
-    , "function getUserByUserId(userId : number): Promise<User> {\n  return fetch(\\`user/${userId}\\`)\n}"
+    [ "function getUser(): Promise<Array<User>> {\n  return fetch(withRemoteBaseUrl(\\`user\\`))\n}"
+    , "function getUserByUserId(userId : number): Promise<User> {\n  return fetch(withRemoteBaseUrl(\\`user/${userId}\\`))\n}"
     ]
 
