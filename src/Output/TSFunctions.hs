@@ -96,9 +96,6 @@ reqToTSFunctionName req = combineWords $ unFunctionName $ req ^. reqFuncName
   capFirstLetter :: Text -> Text
   capFirstLetter = T.pack . over _head toUpper . T.unpack
 
-asPromise :: Text -> Text
-asPromise t = "Promise<" <> t <> ">"
-
 withDefaultUrlFunc :: Text -> Text
 withDefaultUrlFunc t = "withRemoteBaseUrl(\\`" <> t <> "\\`)"
 
@@ -119,3 +116,4 @@ mkDefaultBody req tsReqMethod tsBaseUrlFunc =
       <> (tsBaseUrlFunc $ getReqUrl req)
       <> ")"
     ]
+

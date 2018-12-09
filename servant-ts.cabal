@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 10ce51446ce52e93bbb651a30a67a7439e5fe783f3a218e823d8fa8e8ac1b39c
+-- hash: fba4687d935aa71c21833d50a213f0e47662bdca803f7aeaa64dd077c9c64c0d
 
 name:           servant-ts
 version:        0.1.0.0
@@ -22,8 +22,9 @@ data-dir:       mock
 library
   exposed-modules:
       Convert
-      Output.RequestFlavors.Fetch
       Output.FunctionDoc
+      Output.RequestFlavors.Class
+      Output.RequestFlavors.Fetch
       Output.TSFunctions
   other-modules:
       Paths_servant_ts
@@ -44,8 +45,9 @@ executable servant-ts-cli
   main-is: Main.hs
   other-modules:
       Convert
-      Output.RequestFlavors.Fetch
       Output.FunctionDoc
+      Output.RequestFlavors.Class
+      Output.RequestFlavors.Fetch
       Output.TSFunctions
       APIs
       Paths_servant_ts
@@ -70,8 +72,9 @@ test-suite servant-ts-test
   other-modules:
       Spec
       Convert
-      Output.RequestFlavors.Fetch
       Output.FunctionDoc
+      Output.RequestFlavors.Class
+      Output.RequestFlavors.Fetch
       Output.TSFunctions
       APIs
       Paths_servant_ts

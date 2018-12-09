@@ -11,6 +11,7 @@ import Output.RequestFlavors.Class
 data Fetch
 
 instance TSRequestMethod Fetch where
+  type HasReturnType Fetch = Promise
   printTSReqMethod = "fetch"
 
 reqToTSFunction
@@ -21,8 +22,12 @@ reqToTSFunction req = TSFunctionConfig
   { _tsFuncName   = reqToTSFunctionName req
   , _tsArgs       = reqToTSFunctionArgs req
   , _tsReturnType = maybe "void"
-                          (asPromise . refName . toForeignType)
+                          ((getTSReqMethodReturnType (Proxy @Fetch)))
                           (req ^. reqReturnType)
   , _body         = mkDefaultBody req (Proxy @Fetch) withDefaultUrlFunc
   }
 
+
+getTSReqMethodReturnType :: forall t ft . (TSRequestMethod t, TSReturnType (HasReturnType t), IsForeignType ft) => Proxy t -> ft -> Text
+getTSReqMethodReturnType _ ft =
+  (printReturnType @(HasReturnType t)) ft
