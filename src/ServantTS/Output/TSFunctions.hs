@@ -117,3 +117,21 @@ mkDefaultBody req tsReqMethod tsBaseUrlFunc =
       <> ")"
     ]
 
+getTSReqMethodReturnType :: forall t ft . (TSRequestMethod t, TSReturnType (HasReturnType t), IsForeignType ft) => Proxy t -> ft -> Text
+getTSReqMethodReturnType _ ft =
+  (printReturnType @(HasReturnType t)) ft
+
+
+defaultReqToTSFunction
+  :: (IsForeignType (TSIntermediate flavor), TSRequestMethod tsReqMethod)
+  => Proxy tsReqMethod
+  -> Req (TSIntermediate flavor)
+  -> TSFunctionConfig
+defaultReqToTSFunction pTSReqMethod req = TSFunctionConfig
+  { _tsFuncName   = reqToTSFunctionName req
+  , _tsArgs       = reqToTSFunctionArgs req
+  , _tsReturnType = maybe "void"
+                          ((getTSReqMethodReturnType pTSReqMethod))
+                          (req ^. reqReturnType)
+  , _body         = mkDefaultBody req  pTSReqMethod withDefaultUrlFunc
+  }

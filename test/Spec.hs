@@ -13,7 +13,7 @@ import           Servant.Foreign (Foreign, GenerateList, HasForeign,
                                   _reqReturnType)
 import           Test.Hspec
 import           Typescript
-import qualified ServantTS.Output.RequestFlavors.Fetch as Fetch
+import ServantTS.Output.RequestFlavors.Fetch (Fetch)
 
 servantTSSpec :: Spec
 servantTSSpec = describe "base" $ do
@@ -29,7 +29,7 @@ servantTSSpec = describe "base" $ do
     allDeclarations `shouldBe` answer
   it "should print out correct functions" $ do
     let asTS = servantToReqTS (Proxy :: Proxy FpTs) (Proxy :: Proxy SimpleAPI)
-        allFunctions = fmap (printTSFunction . Fetch.reqToTSFunction) asTS
+        allFunctions = fmap (printTSFunction . (defaultReqToTSFunction (Proxy @Fetch))) asTS
     allFunctions `shouldBe` answer
  where
   answer =
