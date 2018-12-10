@@ -1,10 +1,13 @@
+{-# LANGUAGE DeriveAnyClass #-}
+
 module Main where
 
 import           ServantTS.Convert
 import           Data.Maybe      (fromMaybe)
 import           Data.Proxy
 import           APIs
-import Data.Text
+import Data.Text (Text)
+import qualified Data.Text as T
 import ServantTS.Output.TSFunctions
 import           Servant.API
 import           Servant.Foreign (Foreign, GenerateList, HasForeign,
@@ -14,18 +17,31 @@ import           Typescript
 import Data.Text.Prettyprint.Doc
 import ServantTS.Output.FunctionDoc
 import ServantTS.Output.RequestFlavors.Fetch (Fetch)
+import Dhall hiding (sequence)
 
+
+data Example =
+  Example
+    {decFile  :: Text
+    ,funcFile :: Text
+    } deriving (Generic, Inject)
+
+instance Interpret Example
 
 main :: IO ()
 main = do
+  f <- (input auto "./docs/README.md.template") :: IO (Example -> Text)
+  print $ pretty $ f
+    $ Example
+       {decFile = T.pack $ show $ pretty allDeclarations
+       ,funcFile = T.pack $ show (apiToFunctionDoc asTS reqToTSFunction)
+       }
   print $ apiToFunctionDoc asTS reqToTSFunction
   print $ pretty allDeclarations
  where
   reqToTSFunction = defaultReqToTSFunction (Proxy @Fetch)
   asTS         = servantToReqTS (Proxy :: Proxy FpTs) (Proxy :: Proxy SimpleAPI)
-  allFunctions = Data.Text.intercalate "\n\n"
-    $ fmap (printTSFunction . reqToTSFunction) asTS
   allTypes = fromMaybe [] $ sequence $ _reqReturnType <$> asTS
   allDeclarations =
-    Data.Text.intercalate "\n\n" $ fmap (declaration . toForeignType) allTypes
+    T.intercalate "\n\n" $ fmap (declaration . toForeignType) allTypes
 

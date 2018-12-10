@@ -21,10 +21,12 @@ dependencies:
   - prettyprinter
 
 executables:
-  servant-ts-cli:
+  servant-ts-mk-docs:
     main: Main.hs
+    dependencies:
+      - dhall
     source-dirs:
-      - cli
+      - docs
       - src
       - mock
 

@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: d66b5bf4f5463b8973c54bbd6cc25781a3b037c018b5b7b952988e8ee54cdf49
+-- hash: b3ff9a8039479e2a5c08c23d1b8b977c4525d52c4d47e79bd0e50d330814e3b7
 
 name:           servant-ts
 version:        0.1.0.0
@@ -42,7 +42,7 @@ library
     , text
   default-language: Haskell2010
 
-executable servant-ts-cli
+executable servant-ts-mk-docs
   main-is: Main.hs
   other-modules:
       ServantTS
@@ -54,13 +54,14 @@ executable servant-ts-cli
       APIs
       Paths_servant_ts
   hs-source-dirs:
-      cli
+      docs
       src
       mock
   default-extensions: ConstraintKinds DataKinds DeriveGeneric FlexibleContexts FlexibleInstances GADTs GeneralizedNewtypeDeriving KindSignatures MultiParamTypeClasses OverloadedStrings PolyKinds QuasiQuotes RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving TemplateHaskell TypeApplications TypeFamilies TypeOperators UndecidableInstances
   build-depends:
       aeson-generic-ts
     , base >=4.7 && <5
+    , dhall
     , lens
     , prettyprinter
     , servant

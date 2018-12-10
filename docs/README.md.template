@@ -1,7 +1,7 @@
-# servant-ts
 
-[![CircleCI](https://circleci.com/gh/smaccoun/servant-ts.svg?style=svg)](https://circleci.com/gh/smaccoun/servant-ts)
-
+\(record : { decFile : Text,
+             funcFile : Text  }
+     ) ->  ''
 # Example
 
 Consider the following common User API
@@ -31,18 +31,12 @@ interface User {
   isAdmin : boolean
   hasMI : Option<string>
 }
+${record.decFile}
 ```
 
 ```Typescript
 // Function Declarations
 
-function getUser(): Promise<User> {
-  return fetch(withBaseUrl(`user`))
-}
-
-function getUserByUserId(userId : number): Promise<Array<User>> {
-  return fetch(withBaseUrl(`user/${userId}`))
-}
+${record.funcFile}
 ```
-
-
+''
