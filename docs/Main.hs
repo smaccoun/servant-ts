@@ -31,11 +31,9 @@ instance Interpret Example
 main :: IO ()
 main = do
   f <- (input auto "./docs/README.md.template") :: IO (Example -> Text)
-  writeFile "README.md.checkit" $ T.unpack (f config)
+  writeFile "README.md" $ T.unpack (f config)
   print "FINISHED WRITING FILE"
   print $ f config
---  print $ apiToFunctionDoc asTS reqToTSFunction
---  print $ pretty allDeclarations
  where
   reqToTSFunction = defaultReqToTSFunction (Proxy @Fetch)
   asTS         = servantToReqTS (Proxy :: Proxy FpTs) (Proxy :: Proxy SimpleAPI)

@@ -1,7 +1,3 @@
-# servant-ts
-
-[![CircleCI](https://circleci.com/gh/smaccoun/servant-ts.svg?style=svg)](https://circleci.com/gh/smaccoun/servant-ts)
-
 # Example
 
 Consider the following common User API
@@ -31,18 +27,23 @@ interface User {
   isAdmin : boolean
   hasMI : Option<string>
 }
+Array<User>
+
+interface User { 
+  name : string
+  age : number
+  isAdmin : boolean
+  hasMI : Option<string>
+}
 ```
 
 ```Typescript
 // Function Declarations
 
-function getUser(): Promise<User> {
-  return fetch(withBaseUrl(`user`))
+function getUser(): Promise<Array<User>> {
+  return fetch(withRemoteBaseUrl(\`user\`))
 }
-
-function getUserByUserId(userId : number): Promise<Array<User>> {
-  return fetch(withBaseUrl(`user/${userId}`))
+function getUserByUserId(userId : number): Promise<User> {
+  return fetch(withRemoteBaseUrl(\`user/${userId}\`))
 }
 ```
-
-

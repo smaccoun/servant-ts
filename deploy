@@ -1,0 +1,30 @@
+#!/bin/bash
+set -e
+
+COMMIT_MSG=$1
+
+echo "About to commit with message: $COMMIT_MSG"
+
+if [ -n $COMMIT_MSG ]; then
+  echo "MUST HAVE A COMMIT MSG!"
+  exit 1
+fi 
+
+stack build --fast
+echo "****************************************"
+echo "TESTING TO MAKE SURE EVERYTHING IS BUENO"
+echo "****************************************\n"
+stack test --fast
+
+echo "****************************************"
+echo "MAKING DOCS"
+echo "****************************************\n"
+stack exec servant-ts-mk-docs
+
+echo "****************************************"
+echo "ADDING AND COMMITING"
+echo "****************************************\n"
+$(git add --all)
+$("git commit -m \"$COMMIT_MSG\"")
+$(git push origin master)
+
