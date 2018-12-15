@@ -27,14 +27,6 @@ interface User {
   isAdmin : boolean
   hasMI : Option<string>
 }
-Array<User>
-
-interface User { 
-  name : string
-  age : number
-  isAdmin : boolean
-  hasMI : Option<string>
-}
 ```
 
 ```Typescript

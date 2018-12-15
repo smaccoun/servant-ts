@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "elm-ts": "^0.4.1",
+    "react-syntax-highlighter": "^10.1.2",
     "source-map-loader": "^0.2.4"
   },
   "devDependencies": {
