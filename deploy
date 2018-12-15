@@ -24,7 +24,8 @@ stack exec servant-ts-mk-docs
 echo "****************************************"
 echo "ADDING AND COMMITING"
 echo "****************************************\n"
+which git
 $(git add --all)
-$("git commit -m \"$COMMIT_MSG\"")
+$("git commit -m '$COMMIT_MSG'")
 $(git push origin master)
 
