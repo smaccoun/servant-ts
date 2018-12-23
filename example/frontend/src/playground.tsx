@@ -86,15 +86,14 @@ const ServantTSOutputBox = () => (
       <h4>Server/api.tsx</h4>
       <SyntaxHighlighter language='typescript'>
         {`
-                function getUser(): Promise<Array<User>> {
-                  return fetch(withRemoteBaseUrl(\`user\`))
-                }
+          function getUser(): Promise<Array<User>> {
+            return fetch(withRemoteBaseUrl(\`user\`))
+          }
 
-                function getUserByUserId(userId : number): Promise<User> {
-                  return fetch(withRemoteBaseUrl(\`user/\${userId}\`))
-                }
-
-              `}
+          function getUserByUserId(userId : number): Promise<User> {
+            return fetch(withRemoteBaseUrl(\`user/\${userId}\`))
+          }
+        `}
       </SyntaxHighlighter>
     </div>
     </div>
