@@ -1,17 +1,10 @@
 {
-  "presets": [
-    ["@babel/preset-env", {"modules": false}],
-    "@babel/preset-react"
-  ],
-  "plugins": [
-    "react-hot-loader/babel"
-  ],
+  "presets": ["@babel/react", "@babel/typescript", ["@babel/env", { "modules": false }]],
+  "plugins": ["react-hot-loader/babel", "@babel/plugin-proposal-object-rest-spread", "@babel/plugin-proposal-class-properties"],
   "env": {
-    "production": {
-      "presets": ["minify"]
-    },
     "test": {
-      "presets": ["@babel/preset-env", "@babel/preset-react"]
+      "presets": ["@babel/react", "@babel/typescript", ["@babel/env", { "modules": "commonjs" }]],
+      "plugins": ["@babel/plugin-transform-modules-commonjs"]
     }
   }
 }

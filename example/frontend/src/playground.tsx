@@ -2,7 +2,7 @@ import * as React from 'react'
 import {Html} from "elm-ts/lib/React";
 import {Cmd, none} from "elm-ts/lib/Cmd";
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { Button, Columns, Level } from "react-bulma-components/full";
+import { Columns, Level } from "react-bulma-components/full";
 
 
 export type Model = number
