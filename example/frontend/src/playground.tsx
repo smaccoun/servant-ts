@@ -2,6 +2,8 @@ import * as React from 'react'
 import {Html} from "elm-ts/lib/React";
 import {Cmd, none} from "elm-ts/lib/Cmd";
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import { Button, Columns, Level } from "react-bulma-components/full";
+
 
 export type Model = number
 
@@ -22,9 +24,11 @@ export function view(model: Model): Html<Msg> {
   return dispatch => (
     <div>
       <Header/>
-      <div className="level">
-        <div className="level-left"><Content /></div>
-      </div>
+      <Level style={{marginTop: "8px"}}>
+        <Level.Side align="left">
+          <Content />
+        </Level.Side>
+      </Level>
     </div>
   )
 }
@@ -42,16 +46,16 @@ const Header = () => (
 )
 
 const Content = () => (
-    <div className="columns is-vcentered">
-      <div className="column"><APIBox/></div>
-      <div className="column">
+    <Columns className="is-vcentered">
+      <Columns.Column><APIBox/></Columns.Column>
+      <Columns.Column>
             <i className="fas fa-arrow-right fa-4x"></i>
-      </div>
-      <div className="column">
+      </Columns.Column>
+      <Columns.Column>
         <ServantTSOutputBox />
-      </div>
+      </Columns.Column>
 
-    </div>
+    </Columns>
 )
 
 const APIBox = () => (
