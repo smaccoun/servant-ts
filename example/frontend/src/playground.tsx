@@ -1,23 +1,24 @@
 import * as React from 'react'
 import {Html} from "elm-ts/lib/React";
 import {Cmd, none} from "elm-ts/lib/Cmd";
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { Navbar, Box, Heading, Media, Columns, Level, Card } from "react-bulma-components/full";
+import { Button, Navbar, Box, Heading, Media, Columns, Level, Card } from "react-bulma-components/full";
 import {getApiLiteral, getTSFunctions, getTSTypes} from "./server/api";
+import {displayCodeFiled} from "./views/RenderedFiles";
 
+interface ViewState {
+  isShowingOutput: boolean
+}
 
-export type Model = number
+export type Model = ViewState
 
-export const init: [Model, Cmd<Msg>] = [0, none]
+export const init: [Model, Cmd<Msg>] = [{isShowingOutput: false}, none]
 
-export type Msg = { type: 'Increment' } | { type: 'Decrement' }
+export type Msg = { type: 'toggleShowOutput' }
 
 export function update(msg: Msg, model: Model): [Model, Cmd<Msg>] {
   switch (msg.type) {
-    case 'Increment':
-      return [model + 1, none]
-    case 'Decrement':
-      return [model - 1, none]
+    case 'toggleShowOutput':
+      return [{isShowingOutput: !model.isShowingOutput}, none]
   }
 }
 
@@ -27,7 +28,7 @@ export function view(model: Model): Html<Msg> {
       <Header/>
       <Level style={{margin: "12px"}}>
         <Level.Side align="left">
-          <Content />
+          {Content(model)(dispatch)}
         </Level.Side>
       </Level>
     </div>
@@ -55,31 +56,61 @@ const Header = () => (
   </Navbar>
 )
 
-const Content = () => (
+function Content(viewState: ViewState): Html<Msg> {
+  return dispatch => (
     <Columns className="is-vcentered">
       <Columns.Column>
-        <InputColumn/>
+        {InputColumn()(dispatch)}
       </Columns.Column>
-      <Columns.Column>
+      {viewState.isShowingOutput ?
+        (<Columns className="is-vcentered">
+          <Columns.Column>
             <i className="fas fa-arrow-right fa-4x"></i>
-      </Columns.Column>
-      <Columns.Column>
-        <ServantTSOutputBox />
-      </Columns.Column>
+          </Columns.Column>
+          <Columns.Column>
+            <ServantTSOutputBox/>
+          </Columns.Column>
+        </Columns>
+        )
+          :
+          <div></div>
+        }
+
 
     </Columns>
-)
+  )
+}
 
-const InputColumn = () => (
-  <Box>
-    <Heading>Input</Heading>
-    {APIBox()}
-  </Box>
-)
+function InputColumn(): Html<Msg> {
+  return dispatch => (
+    <Box>
+      <Heading>Input</Heading>
+      {APIBox()(dispatch)}
+    </Box>
+    )
+}
 
-const APIBox = () => (
-  displayCodeFiled("API.hs", getApiLiteral(), "typescript")
-)
+function APIBox(): Html<Msg> {
+  return dispatch => (
+    <div>
+      <Level>
+        <Level.Item>{displayCodeFiled("API.hs", getApiLiteral(), "typescript") }</Level.Item>
+      </Level>
+      <Level>
+        <Level.Side align="left"></Level.Side>
+        <Level.Side align="right">
+          <Level.Item>
+            <Button
+              color="danger"
+              onClick={() => dispatch({type: 'toggleShowOutput'})}>
+              Run
+            </Button>
+          </Level.Item>
+        </Level.Side>
+      </Level>
+    </div>
+  )
+}
 
 const ServantTSOutputBox = () => (
   <div className="box">
@@ -104,27 +135,4 @@ const ServantTSOutputBox = () => (
 )
 
 
-const displayCodeFiled = (filename: string, codeContent: string, language: string) => (
-  displayFile(
-    filename,
-    (<SyntaxHighlighter language={language}>{codeContent}</SyntaxHighlighter>)
-  )
-)
 
-
-function displayFile(filename: string, content: JSX.Element): JSX.Element {
-  return (
-    <Card>
-      <Card.Header>
-        <Card.Header.Title>
-          <Media>
-            <div className="media-left"><i className="fas fa-file"></i></div>
-            <Media.Item><h3>{filename}</h3></Media.Item>
-          </Media>
-        </Card.Header.Title>
-      </Card.Header>
-      {content}
-    </Card>
-  )
-
-}

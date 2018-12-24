@@ -31,7 +31,7 @@
           <entry key="js" value="1229" />
           <entry key="json" value="794" />
           <entry key="scss" value="2" />
-          <entry key="tsx" value="8771" />
+          <entry key="tsx" value="11188" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -40,7 +40,7 @@
           <entry key="JSON" value="634" />
           <entry key="JavaScript" value="1229" />
           <entry key="SCSS" value="2" />
-          <entry key="TypeScript JSX" value="8771" />
+          <entry key="TypeScript JSX" value="11188" />
           <entry key="tsconfig" value="255" />
         </counts>
       </usages-collector>
@@ -59,7 +59,7 @@
           <entry key="lock" value="1" />
           <entry key="scss" value="1" />
           <entry key="ts" value="1" />
-          <entry key="tsx" value="2" />
+          <entry key="tsx" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -70,7 +70,7 @@
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SCSS" value="1" />
           <entry key="TypeScript" value="1" />
-          <entry key="TypeScript JSX" value="2" />
+          <entry key="TypeScript JSX" value="3" />
           <entry key="tsconfig" value="2" />
           <entry key="yarn.lock" value="1" />
         </counts>
@@ -139,10 +139,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/playground.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="48" column="61" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="62" />
+            <state relative-caret-position="305">
+              <caret line="65" column="40" selection-start-line="65" selection-start-column="40" selection-end-line="65" selection-end-column="40" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/RenderedFiles.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+              <folding>
+                <element signature="e#0#57#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -161,14 +173,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>container</find>
-      <find>getuser</find>
-      <find>columns</find>
-      <find>rules</find>
-      <find>src</find>
-      <find>out</find>
-      <find>bundle</find>
-      <find>babel</find>
       <find>reactk</find>
       <find>development</find>
       <find>react-dom</find>
@@ -191,6 +195,14 @@
       <find>apitext</find>
       <find>hero</find>
       <find>github</find>
+      <find>a</find>
+      <find>outu</find>
+      <find>buttonjkj</find>
+      <find>apibox</find>
+      <find>APIBox</find>
+      <find>servanttsout</find>
+      <find>button</find>
+      <find>arrow</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -209,6 +221,7 @@
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/server/api.tsx" />
+        <option value="$PROJECT_DIR$/src/views/RenderedFiles.tsx" />
         <option value="$PROJECT_DIR$/src/playground.tsx" />
       </list>
     </option>
@@ -259,6 +272,12 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -297,12 +316,12 @@
       <updated>1544899321532</updated>
       <workItem from="1544899322965" duration="5689000" />
       <workItem from="1545268762919" duration="2445000" />
-      <workItem from="1545501961081" duration="19076000" />
+      <workItem from="1545501961081" duration="21470000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27210000" />
+    <option name="totallyTimeSpent" value="29604000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -408,6 +427,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/api.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -418,17 +444,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/api.tsx">
+    <entry file="file://$PROJECT_DIR$/src/views/RenderedFiles.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="180">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/playground.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="48" column="61" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="62" />
+        <state relative-caret-position="305">
+          <caret line="65" column="40" selection-start-line="65" selection-start-column="40" selection-end-line="65" selection-end-column="40" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
