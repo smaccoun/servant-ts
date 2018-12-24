@@ -2,7 +2,7 @@ import * as React from 'react'
 import {Html} from "elm-ts/lib/React";
 import {Cmd, none} from "elm-ts/lib/Cmd";
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { Box, Heading, Media, Columns, Level, Card } from "react-bulma-components/full";
+import { Navbar, Box, Heading, Media, Columns, Level, Card } from "react-bulma-components/full";
 import {getApiLiteral, getTSFunctions, getTSTypes} from "./server/api";
 
 
@@ -25,7 +25,7 @@ export function view(model: Model): Html<Msg> {
   return dispatch => (
     <div>
       <Header/>
-      <Level style={{marginTop: "8px"}}>
+      <Level style={{margin: "12px"}}>
         <Level.Side align="left">
           <Content />
         </Level.Side>
@@ -35,15 +35,20 @@ export function view(model: Model): Html<Msg> {
 }
 
 const Header = () => (
-    <section className="hero is-primary">
-        <div className="hero-body">
-            <div className="container">
-                <h1 className="title">
-                  Servant TS
-                </h1>
-            </div>
-        </div>
-    </section>
+  <Navbar color="info">
+      <Navbar.Brand>
+        <Navbar.Item>
+          <h1 className="title">
+            Servant TS
+          </h1>
+        </Navbar.Item>
+      </Navbar.Brand>
+      <Navbar.Menu>
+        <Navbar.Container position="end">
+            <Navbar.Item><i className="fab fa-github"></i></Navbar.Item>
+        </Navbar.Container>
+      </Navbar.Menu>
+  </Navbar>
 )
 
 const Content = () => (
