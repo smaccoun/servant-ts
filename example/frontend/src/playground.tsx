@@ -94,7 +94,7 @@ function APIBox(): Html<Msg> {
   return dispatch => (
     <div>
       <Level>
-        <Level.Item>{displayCodeFiled("API.hs", getApiLiteral(), "typescript") }</Level.Item>
+        <Level.Item>{displayCodeFiled("API.hs", getApiLiteral(), "haskell") }</Level.Item>
       </Level>
       <Level>
         <Level.Side align="left"></Level.Side>
