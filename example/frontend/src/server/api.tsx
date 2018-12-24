@@ -1,7 +1,15 @@
 export const getApiLiteral = (): string => (
-  `type SimpleAPI =
-         "user" :> Get '[JSON] [User]
-    :<|> "user" :> Capture "userId" Int :> Get '[JSON] User
+  `data User = 
+  User
+    {name    :: Text
+    ,age     :: Int
+    ,isAdmin :: Bool
+    ,hasMI   :: Maybe Text
+    } deriving (Generic, TypescriptType)
+
+type SimpleAPI =
+       "user" :> Get '[JSON] [User]
+  :<|> "user" :> Capture "userId" Int :> Get '[JSON] User
   `
 )
 

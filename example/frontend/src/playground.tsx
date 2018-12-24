@@ -48,7 +48,7 @@ const Header = () => (
         <Navbar.Container position="end">
             <Navbar.Item>
               <a href="https://github.com/smaccoun/servant-ts">
-                <i className="fab fa-github"></i>
+                <i className="fab fa-github fa-2x"></i>
               </a>
             </Navbar.Item>
         </Navbar.Container>
