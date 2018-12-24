@@ -1,0 +1,6 @@
+cd example/frontend
+yarn build
+cd ../../
+rm -r docs/*
+cp -r ./example/frontend/dist/* docs
+

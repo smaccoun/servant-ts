@@ -25,3 +25,7 @@ buildAndFormat:
 	find src -name '*.hs' -print | xargs brittany --write-mode=inplace
 	find test -name '*.hs' -print | xargs brittany --write-mode=inplace
 	hlint .
+
+.PHONY: docs
+docs:
+	runDocs
