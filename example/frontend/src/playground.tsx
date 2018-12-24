@@ -45,7 +45,11 @@ const Header = () => (
       </Navbar.Brand>
       <Navbar.Menu>
         <Navbar.Container position="end">
-            <Navbar.Item><i className="fab fa-github"></i></Navbar.Item>
+            <Navbar.Item>
+              <a href="https://github.com/smaccoun/servant-ts">
+                <i className="fab fa-github"></i>
+              </a>
+            </Navbar.Item>
         </Navbar.Container>
       </Navbar.Menu>
   </Navbar>
