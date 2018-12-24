@@ -2,7 +2,8 @@ import * as React from 'react'
 import {Html} from "elm-ts/lib/React";
 import {Cmd, none} from "elm-ts/lib/Cmd";
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { Columns, Level } from "react-bulma-components/full";
+import { Box, Heading, Media, Columns, Level, Card } from "react-bulma-components/full";
+import {getApiLiteral, getTSFunctions, getTSTypes} from "./server/api";
 
 
 export type Model = number
@@ -47,7 +48,9 @@ const Header = () => (
 
 const Content = () => (
     <Columns className="is-vcentered">
-      <Columns.Column><APIBox/></Columns.Column>
+      <Columns.Column>
+        <InputColumn/>
+      </Columns.Column>
       <Columns.Column>
             <i className="fas fa-arrow-right fa-4x"></i>
       </Columns.Column>
@@ -58,47 +61,61 @@ const Content = () => (
     </Columns>
 )
 
+const InputColumn = () => (
+  <Box>
+    <Heading>Input</Heading>
+    {APIBox()}
+  </Box>
+)
+
 const APIBox = () => (
-  <div className="box" style={{display: 'flex', flexDirection: 'column'}}>
-    <h1>API</h1>
-    <SyntaxHighlighter language='haskell'>
-      {`
-        type SimpleAPI =
-                 "user" :> Get '[JSON] [User]
-            :<|> "user" :> Capture "userId" Int :> Get '[JSON] User
-      `}
-    </SyntaxHighlighter>
-  </div>
+  displayCodeFiled("API.hs", getApiLiteral(), "typescript")
 )
 
 const ServantTSOutputBox = () => (
-  <div className="box" style={{display: 'flex', flexDirection: 'column', width: '100%'}}>
-    <div className="box" style={{display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center'}}>
-      <h4>Server/types.tsx</h4>
-      <SyntaxHighlighter language='typescript'>
-        {`
-          interface User {
-            name : string
-            age : number
-            isAdmin : boolean
-            hasMI : Option<string>
-          }
-        `}
-      </SyntaxHighlighter>
-    </div>
-    <div className="box" style={{display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center'}}>
-      <h4>Server/api.tsx</h4>
-      <SyntaxHighlighter language='typescript'>
-        {`
-          function getUser(): Promise<Array<User>> {
-            return fetch(withRemoteBaseUrl(\`user\`))
-          }
-
-          function getUserByUserId(userId : number): Promise<User> {
-            return fetch(withRemoteBaseUrl(\`user/\${userId}\`))
-          }
-        `}
-      </SyntaxHighlighter>
-    </div>
+  <div className="box">
+    <Level>
+      <Heading>Output</Heading>
+    </Level>
+    <Level style={{marginTop: "10px"}}>
+    {displayCodeFiled(
+      "Server/types.tsx",
+      getTSTypes(),
+      "typescript"
+    )}
+    </Level>
+    <Level>
+      {displayCodeFiled(
+        "Server/api.tsx",
+        getTSFunctions(),
+        "typescript"
+        )}
+    </Level>
     </div>
 )
+
+
+const displayCodeFiled = (filename: string, codeContent: string, language: string) => (
+  displayFile(
+    filename,
+    (<SyntaxHighlighter language={language}>{codeContent}</SyntaxHighlighter>)
+  )
+)
+
+
+function displayFile(filename: string, content: JSX.Element): JSX.Element {
+  return (
+    <Card>
+      <Card.Header>
+        <Card.Header.Title>
+          <Media>
+            <div className="media-left"><i className="fas fa-file"></i></div>
+            <Media.Item><h3>{filename}</h3></Media.Item>
+          </Media>
+        </Card.Header.Title>
+      </Card.Header>
+      {content}
+    </Card>
+  )
+
+}
