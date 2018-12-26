@@ -2,7 +2,6 @@ module ServantTS.Output.TSFunctions where
 
 import           Control.Lens
 import Data.Text.Strict.Lens
-import Data.Char (toUpper)
 import           Data.Maybe      (fromMaybe)
 import           Data.Monoid     ((<>))
 import           Data.Proxy
@@ -13,6 +12,7 @@ import           GHC.Generics
 import           Servant.API
 import Data.Text.Prettyprint.Doc
 import           Servant.Foreign
+import           Servant.Foreign.Inflections (camelCase)
 import           Typescript
 import ServantTS.Output.RequestFlavors.Class
 
@@ -86,15 +86,7 @@ reqToTSFunctionName
   :: (IsForeignType (TSIntermediate flavor))
   => Req (TSIntermediate flavor)
   -> Text
-reqToTSFunctionName req = combineWords $ unFunctionName $ req ^. reqFuncName
- where
-  combineWords :: [Text] -> Text
-  combineWords []       = ""
-  combineWords [x     ] = x
-  combineWords (x : xs) = x <> combineWords (fmap capFirstLetter xs)
-
-  capFirstLetter :: Text -> Text
-  capFirstLetter = T.pack . over _head toUpper . T.unpack
+reqToTSFunctionName req = camelCase $ req ^. reqFuncName
 
 withDefaultUrlFunc :: Text -> Text
 withDefaultUrlFunc t = "withRemoteBaseUrl(\\`" <> t <> "\\`)"
