@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: b3ff9a8039479e2a5c08c23d1b8b977c4525d52c4d47e79bd0e50d330814e3b7
+-- hash: d9714ae57d89ec02cda04dfdaa7ee4c4bbcc755416fcc0631ccf6fcba8008aae
 
 name:           servant-ts
 version:        0.1.0.0
@@ -54,7 +54,7 @@ executable servant-ts-mk-docs
       APIs
       Paths_servant_ts
   hs-source-dirs:
-      docs
+      mkdocs
       src
       mock
   default-extensions: ConstraintKinds DataKinds DeriveGeneric FlexibleContexts FlexibleInstances GADTs GeneralizedNewtypeDeriving KindSignatures MultiParamTypeClasses OverloadedStrings PolyKinds QuasiQuotes RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving TemplateHaskell TypeApplications TypeFamilies TypeOperators UndecidableInstances

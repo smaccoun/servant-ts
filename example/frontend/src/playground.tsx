@@ -1,24 +1,42 @@
 import * as React from 'react'
 import {Html} from "elm-ts/lib/React";
 import {Cmd, none} from "elm-ts/lib/Cmd";
-import { Button, Navbar, Box, Heading, Media, Columns, Level, Card } from "react-bulma-components/full";
+import { Dropdown, Button, Navbar, Box, Heading, Media, Columns, Level, Card } from "react-bulma-components/full";
 import {getApiLiteral, getTSFunctions, getTSTypes} from "./server/api";
 import {displayCodeFiled} from "./views/RenderedFiles";
+import { Lens, Optional } from 'monocle-ts'
 
 interface ViewState {
   isShowingOutput: boolean
+  configuredFlavor: ConfiguredFlavor
 }
+
+const showOutputL = Lens.fromProp<ViewState>()('isShowingOutput')
+const changeFlavorMenuStateL = Lens.fromProp<ViewState>()('configuredFlavor')
+
+type ConfiguredFlavor = string
 
 export type Model = ViewState
 
-export const init: [Model, Cmd<Msg>] = [{isShowingOutput: false}, none]
+export const init: [Model, Cmd<Msg>] = [{isShowingOutput: false, configuredFlavor: 'FpTs'}, none]
 
-export type Msg = { type: 'toggleShowOutput' }
+enum MsgTypes {
+  TOGGLE_SHOW_OUTPUT = 'TOGGLE_SHOW_OUTPUT',
+  CHOOSE_FLAVOR = 'CHOOSE_FLAVOR'
+}
+
+export type Msg =
+    { type: MsgTypes.TOGGLE_SHOW_OUTPUT }
+  | { type: MsgTypes.CHOOSE_FLAVOR, flavor: string }
 
 export function update(msg: Msg, model: Model): [Model, Cmd<Msg>] {
+  console.log("MODEL: ", model)
+  console.log("MSG: ", msg)
   switch (msg.type) {
-    case 'toggleShowOutput':
-      return [{isShowingOutput: !model.isShowingOutput}, none]
+    case MsgTypes.TOGGLE_SHOW_OUTPUT:
+      return [showOutputL.set(true)(model), none]
+    case MsgTypes.CHOOSE_FLAVOR:
+      return [changeFlavorMenuStateL.set(msg.flavor)(model), none]
   }
 }
 
@@ -47,8 +65,8 @@ const Header = () => (
       <Navbar.Menu>
         <Navbar.Container position="end">
             <Navbar.Item>
-              <a href="https://github.com/smaccoun/servant-ts">
-                <i className="fab fa-github fa-2x"></i>
+              <a className="fab fa-github fa-2x" href="https://github.com/smaccoun/servant-ts">
+                <i ></i>
               </a>
             </Navbar.Item>
         </Navbar.Container>
@@ -60,7 +78,7 @@ function Content(viewState: ViewState): Html<Msg> {
   return dispatch => (
     <Columns className="is-vcentered">
       <Columns.Column>
-        {InputColumn()(dispatch)}
+        {InputColumn(viewState)(dispatch)}
       </Columns.Column>
       {viewState.isShowingOutput ?
         (<Columns className="is-vcentered">
@@ -68,7 +86,7 @@ function Content(viewState: ViewState): Html<Msg> {
             <i className="fas fa-arrow-right fa-4x"></i>
           </Columns.Column>
           <Columns.Column>
-            <ServantTSOutputBox/>
+            {viewServantTSOutputBox(viewState.configuredFlavor)}
           </Columns.Column>
         </Columns>
         )
@@ -81,16 +99,16 @@ function Content(viewState: ViewState): Html<Msg> {
   )
 }
 
-function InputColumn(): Html<Msg> {
+function InputColumn(model: Model): Html<Msg> {
   return dispatch => (
     <Box>
       <Heading>Input</Heading>
-      {APIBox()(dispatch)}
+      {APIBox(model)(dispatch)}
     </Box>
     )
 }
 
-function APIBox(): Html<Msg> {
+function APIBox(model: Model): Html<Msg> {
   return dispatch => (
     <div>
       <Level>
@@ -100,9 +118,12 @@ function APIBox(): Html<Msg> {
         <Level.Side align="left"></Level.Side>
         <Level.Side align="right">
           <Level.Item>
+            {viewFlavorMenu(model.configuredFlavor)(dispatch)}
+          </Level.Item>
+          <Level.Item>
             <Button
               color="danger"
-              onClick={() => dispatch({type: 'toggleShowOutput'})}>
+              onClick={() => dispatch({type: MsgTypes.TOGGLE_SHOW_OUTPUT})}>
               Run
             </Button>
           </Level.Item>
@@ -112,7 +133,20 @@ function APIBox(): Html<Msg> {
   )
 }
 
-const ServantTSOutputBox = () => (
+function viewFlavorMenu(flavor: string): Html<Msg> {
+  return dispatch => (
+    <Dropdown value={flavor} onChange={(flavor) => dispatch({type: MsgTypes.CHOOSE_FLAVOR, flavor })}>
+      <Dropdown.Item value="FpTs">
+        FpTs
+      </Dropdown.Item>
+      <Dropdown.Item value="Vanilla">
+        Vanilla
+      </Dropdown.Item>
+    </Dropdown>
+  )
+}
+
+const viewServantTSOutputBox = (flavor: string) => (
   <div className="box">
     <Level>
       <Heading>Output</Heading>
@@ -120,7 +154,7 @@ const ServantTSOutputBox = () => (
     <Level style={{marginTop: "10px"}}>
     {displayCodeFiled(
       "Server/types.tsx",
-      getTSTypes(),
+      getTSTypes(flavor),
       "typescript"
     )}
     </Level>

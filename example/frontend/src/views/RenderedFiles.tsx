@@ -1,7 +1,7 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
 import * as React from "react";
 import { Navbar, Box, Heading, Media, Columns, Level, Card } from "react-bulma-components/full";
-import { monokaiSublime, paraisoLight } from 'react-syntax-highlighter/dist/styles/hljs'
+import { monokaiSublime } from 'react-syntax-highlighter/dist/styles/hljs'
 
 export const displayCodeFiled = (filename: string, codeContent: string, language: string) => (
   displayFile(

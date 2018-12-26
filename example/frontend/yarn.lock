@@ -3593,7 +3593,7 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-fp-ts@^1.0.0, fp-ts@^1.0.1:
+fp-ts@^1.0.0, fp-ts@^1.0.1, fp-ts@^1.11.0:
   version "1.12.1"
   resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-1.12.1.tgz#c3d032b7be009046a935991aaa21efaa14bf8d20"
   integrity sha512-rNFziqhEwsAAXUrC6KkLwZwsiqswQFQ+7QeS3noSwTAOo6dPSJJ1S9yoHZ9ToRf+fpro9gbixWi9hkDHpb/9bg==
@@ -5853,6 +5853,13 @@ mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
   dependencies:
     minimist "0.0.8"
+
+monocle-ts@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/monocle-ts/-/monocle-ts-1.5.1.tgz#1e2522a663b0192539c94089c1a8a626aa8f0f84"
+  integrity sha512-sllYVUdfXTkF88yr5Rqf4Rut3ieUHMV2O6KmkNe6aa+ZueRzOqd5VGpOeenBMicb/d9tpXbgYk8CZbwAQ+rwqw==
+  dependencies:
+    fp-ts "^1.11.0"
 
 move-concurrently@^1.0.1:
   version "1.0.1"

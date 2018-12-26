@@ -14,15 +14,31 @@ type SimpleAPI =
 )
 
 
-export const getTSTypes = (): string => (
-  `interface User {
+export function getTSTypes(flavor: string): string {
+  switch(flavor){
+    case 'FpTs': {
+      return `interface User {
     name : string
     age : number
     isAdmin : boolean
     hasMI : Option<string>
 }
   `
-)
+  }
+    default: {
+      return `interface User {
+    name : string
+    age : number
+    isAdmin : boolean
+    hasMI : string | null 
+}
+  `
+    }
+
+
+  }
+
+}
 
 
 export const getTSFunctions = (): string => (
@@ -35,3 +51,5 @@ function getUserByUserId(userId : number): Promise<User> {
 }
   `
 )
+
+

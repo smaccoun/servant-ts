@@ -20,6 +20,7 @@
     "bulma": "^0.7.2",
     "clean-webpack-plugin": "^1.0.0",
     "elm-ts": "^0.4.1",
+    "monocle-ts": "^1.5.1",
     "react": "^16.7.0",
     "react-bulma-components": "2.3.0",
     "react-dom": "^16.7.0",
