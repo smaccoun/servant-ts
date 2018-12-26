@@ -16,10 +16,8 @@ export const Header = () => (
     </Navbar.Brand>
     <Navbar.Menu>
       <Navbar.Container position="end">
-        <Navbar.Item>
-          <a className="fab fa-github fa-2x" href="https://github.com/smaccoun/servant-ts">
-            <i ></i>
-          </a>
+        <Navbar.Item href="https://github.com/smaccoun/servant-ts">
+          <i className="fab fa-github fa-2x" ></i>
         </Navbar.Item>
       </Navbar.Container>
     </Navbar.Menu>

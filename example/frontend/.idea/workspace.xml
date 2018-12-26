@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a368368d-2a50-48e6-8be7-a688e788c9c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/playground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/PlaygroundViews.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/PlaygroundViews.tsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,7 +31,7 @@
           <entry key="js" value="1229" />
           <entry key="json" value="794" />
           <entry key="scss" value="2" />
-          <entry key="tsx" value="16595" />
+          <entry key="tsx" value="16691" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -40,7 +40,7 @@
           <entry key="JSON" value="634" />
           <entry key="JavaScript" value="1229" />
           <entry key="SCSS" value="2" />
-          <entry key="TypeScript JSX" value="16595" />
+          <entry key="TypeScript JSX" value="16691" />
           <entry key="tsconfig" value="255" />
         </counts>
       </usages-collector>
@@ -136,20 +136,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/playground.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            <state relative-caret-position="671">
+              <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/PlaygroundViews.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+            <state relative-caret-position="225">
+              <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -190,7 +193,6 @@
       <find>APIBox</find>
       <find>button</find>
       <find>arrow</find>
-      <find>github</find>
       <find>simpleapi</find>
       <find>api</find>
       <find>card</find>
@@ -212,6 +214,7 @@
       <find>flavor</find>
       <find>Flavor</find>
       <find>navbar</find>
+      <find>github</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -233,8 +236,8 @@
         <option value="$PROJECT_DIR$/src/server/api.tsx" />
         <option value="$PROJECT_DIR$/src/views/RenderedFiles.tsx" />
         <option value="$PROJECT_DIR$/src/views/Playground.tsx" />
-        <option value="$PROJECT_DIR$/src/views/PlaygroundViews.tsx" />
         <option value="$PROJECT_DIR$/src/playground.tsx" />
+        <option value="$PROJECT_DIR$/src/views/PlaygroundViews.tsx" />
       </list>
     </option>
   </component>
@@ -328,12 +331,12 @@
       <updated>1544899321532</updated>
       <workItem from="1544899322965" duration="5689000" />
       <workItem from="1545268762919" duration="2445000" />
-      <workItem from="1545501961081" duration="29112000" />
+      <workItem from="1545501961081" duration="29348000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37246000" />
+    <option name="totallyTimeSpent" value="37482000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -483,20 +486,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/PlaygroundViews.tsx">
+    <entry file="file://$PROJECT_DIR$/src/playground.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+        <state relative-caret-position="671">
+          <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/playground.tsx">
+    <entry file="file://$PROJECT_DIR$/src/views/PlaygroundViews.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="225">
+          <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
