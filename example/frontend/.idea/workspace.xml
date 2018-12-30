@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a368368d-2a50-48e6-8be7-a688e788c9c9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/PlaygroundViews.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/PlaygroundViews.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../servant-ts.cabal" beforeDir="false" afterPath="$PROJECT_DIR$/../../servant-ts.cabal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/ServantTS/Convert.hs" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/ServantTS/Convert.hs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../stack.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../stack.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,7 +35,7 @@
           <entry key="js" value="1229" />
           <entry key="json" value="794" />
           <entry key="scss" value="2" />
-          <entry key="tsx" value="16691" />
+          <entry key="tsx" value="16751" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -40,7 +44,7 @@
           <entry key="JSON" value="634" />
           <entry key="JavaScript" value="1229" />
           <entry key="SCSS" value="2" />
-          <entry key="TypeScript JSX" value="16691" />
+          <entry key="TypeScript JSX" value="16751" />
           <entry key="tsconfig" value="255" />
         </counts>
       </usages-collector>
@@ -151,8 +155,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/PlaygroundViews.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+            <state relative-caret-position="135">
+              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -331,12 +335,12 @@
       <updated>1544899321532</updated>
       <workItem from="1544899322965" duration="5689000" />
       <workItem from="1545268762919" duration="2445000" />
-      <workItem from="1545501961081" duration="29348000" />
+      <workItem from="1545501961081" duration="30936000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37482000" />
+    <option name="totallyTimeSpent" value="39070000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -498,8 +502,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/PlaygroundViews.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+        <state relative-caret-position="135">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>

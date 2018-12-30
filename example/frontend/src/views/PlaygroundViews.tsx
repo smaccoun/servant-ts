@@ -8,10 +8,8 @@ import {Model, Msg, MsgTypes, ViewState} from "../playground";
 export const Header = () => (
   <Navbar color="info">
     <Navbar.Brand>
-      <Navbar.Item>
-        <h1 className="title">
+      <Navbar.Item renderAs="h1">
           Servant TS
-        </h1>
       </Navbar.Item>
     </Navbar.Brand>
     <Navbar.Menu>

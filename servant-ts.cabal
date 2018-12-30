@@ -1,8 +1,10 @@
--- This file has been generated from package.yaml by hpack version 0.28.2.
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.1.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: d9714ae57d89ec02cda04dfdaa7ee4c4bbcc755416fcc0631ccf6fcba8008aae
+-- hash: b52971203bc2e3c35849a78657b9e88a3d7ecfea352ae2a952350daf125b0f18
 
 name:           servant-ts
 version:        0.1.0.0
@@ -14,7 +16,6 @@ copyright:      2018 Steven MacCoun
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
-cabal-version:  >= 1.10
 extra-source-files:
     README.md
 data-dir:       mock

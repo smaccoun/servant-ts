@@ -1,5 +1,3 @@
-https://smaccoun.github.io/servant-ts/
-
 # Example
 
 Consider the following common User API
@@ -29,15 +27,23 @@ interface User {
   isAdmin : boolean
   hasMI : Option<string>
 }
+Array<User>
+
+interface User { 
+  name : string
+  age : number
+  isAdmin : boolean
+  hasMI : Option<string>
+}
 ```
 
 ```Typescript
 // Function Declarations
 
 function getUser(): Promise<Array<User>> {
-  return fetch(withRemoteBaseUrl(`user`))
+  return fetch(withRemoteBaseUrl(\`user\`))
 }
 function getUserByUserId(userId : number): Promise<User> {
-  return fetch(withRemoteBaseUrl(`user/${userId}`))
+  return fetch(withRemoteBaseUrl(\`user/${userId}\`))
 }
 ```

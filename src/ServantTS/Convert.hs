@@ -21,20 +21,25 @@ instance (TypescriptType a) => HasForeignType LangTypescript (TSIntermediate fla
 
 servantToTSVanilla
   :: ( HasForeign LangTypescript (TSIntermediate flavor) api
-     , GenerateList (TSIntermediate flavor) (Foreign (TSIntermediate flavor) api)
+     , GenerateList
+         (TSIntermediate flavor)
+         (Foreign (TSIntermediate flavor) api)
      )
   => (Req (TSIntermediate flavor) -> Text)
   -> Proxy api
   -> Proxy flavor
   -> [Text]
-servantToTSVanilla genTS proxyApi flavor = genTS <$> servantToReqTS flavor proxyApi
+servantToTSVanilla genTS proxyApi flavor =
+  genTS <$> servantToReqTS flavor proxyApi
 
 servantToReqTS
   :: ( HasForeign LangTypescript (TSIntermediate flavor) api
-     , GenerateList (TSIntermediate flavor) (Foreign (TSIntermediate flavor) api)
+     , GenerateList
+         (TSIntermediate flavor)
+         (Foreign (TSIntermediate flavor) api)
      )
   => Proxy flavor
   -> Proxy api
   -> [Req (TSIntermediate flavor)]
-servantToReqTS _ =
-  listFromAPI (Proxy :: Proxy LangTypescript) (Proxy :: Proxy (TSIntermediate flavor))
+servantToReqTS _ = listFromAPI (Proxy :: Proxy LangTypescript)
+                               (Proxy :: Proxy (TSIntermediate flavor))

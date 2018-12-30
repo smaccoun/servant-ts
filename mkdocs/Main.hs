@@ -30,7 +30,7 @@ instance Interpret Example
 
 main :: IO ()
 main = do
-  f <- (input auto "./docs/README.md.template") :: IO (Example -> Text)
+  f <- (input auto "./mkdocs/README.md.template") :: IO (Example -> Text)
   writeFile "README.md" $ T.unpack (f config)
   print "FINISHED WRITING FILE"
   print $ f config
