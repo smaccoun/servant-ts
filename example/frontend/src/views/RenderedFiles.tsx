@@ -16,7 +16,6 @@ export const displayCodeFiled = (filename: string, codeContent: string, language
 )
 
 const getLanguageSyntaxColorStyle = (language: string) => {
-  console.log(language)
   switch(language){
 
     case 'typescript': return vs2015

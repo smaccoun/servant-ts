@@ -3,10 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="a368368d-2a50-48e6-8be7-a688e788c9c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/bundled.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/PlaygroundViews.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/PlaygroundViews.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../servant-ts.cabal" beforeDir="false" afterPath="$PROJECT_DIR$/../../servant-ts.cabal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/ServantTS/Convert.hs" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/ServantTS/Convert.hs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../stack.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../stack.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/RenderedFiles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/RenderedFiles.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn-error.log" beforeDir="false" afterPath="$PROJECT_DIR$/yarn-error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,19 +36,19 @@
         <counts>
           <entry key="babelrc" value="95" />
           <entry key="html" value="364" />
-          <entry key="js" value="1229" />
+          <entry key="js" value="1238" />
           <entry key="json" value="794" />
           <entry key="scss" value="2" />
-          <entry key="tsx" value="16751" />
+          <entry key="tsx" value="26236" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="364" />
           <entry key="JSON" value="634" />
-          <entry key="JavaScript" value="1229" />
+          <entry key="JavaScript" value="1238" />
           <entry key="SCSS" value="2" />
-          <entry key="TypeScript JSX" value="16751" />
+          <entry key="TypeScript JSX" value="26236" />
           <entry key="tsconfig" value="255" />
         </counts>
       </usages-collector>
@@ -55,12 +59,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="babelrc" value="1" />
+          <entry key="babelrc" value="2" />
           <entry key="gitignore" value="1" />
           <entry key="html" value="2" />
           <entry key="js" value="2" />
           <entry key="json" value="4" />
           <entry key="lock" value="1" />
+          <entry key="mkdocs" value="1" />
           <entry key="scss" value="1" />
           <entry key="ts" value="1" />
           <entry key="tsx" value="7" />
@@ -69,9 +74,9 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="2" />
-          <entry key="JSON" value="3" />
+          <entry key="JSON" value="4" />
           <entry key="JavaScript" value="2" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
           <entry key="SCSS" value="1" />
           <entry key="TypeScript" value="1" />
           <entry key="TypeScript JSX" value="7" />
@@ -107,8 +112,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webpack.config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+            <state relative-caret-position="60">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -116,17 +121,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.babelrc">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+            <state relative-caret-position="60">
+              <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -134,17 +130,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="77" selection-start-line="7" selection-start-column="77" selection-end-line="7" selection-end-column="77" />
+            <state relative-caret-position="286">
+              <caret line="31" column="15" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mkdocs">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/playground.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="671">
-              <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+            <state relative-caret-position="455">
+              <caret line="62" column="60" selection-start-line="62" selection-start-column="60" selection-end-line="62" selection-end-column="60" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -152,11 +153,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/PlaygroundViews.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+            <state relative-caret-position="357">
+              <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -168,7 +169,7 @@
         <entry file="file://$PROJECT_DIR$/src/views/RenderedFiles.tsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
-              <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+              <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
@@ -189,25 +190,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hero</find>
-      <find>a</find>
-      <find>outu</find>
-      <find>buttonjkj</find>
-      <find>apibox</find>
-      <find>APIBox</find>
-      <find>button</find>
-      <find>arrow</find>
-      <find>simpleapi</find>
-      <find>api</find>
-      <find>card</find>
-      <find>click_fl</find>
-      <find>header</find>
-      <find>&lt;a</find>
-      <find>fp-ts</find>
-      <find>dropdwon</find>
-      <find>click_</find>
-      <find>click</find>
-      <find>value</find>
       <find>gettstyp</find>
       <find>gettstypes</find>
       <find>servanttsout</find>
@@ -219,6 +201,25 @@
       <find>Flavor</find>
       <find>navbar</find>
       <find>github</find>
+      <find>viewse</find>
+      <find>viewser</find>
+      <find>react</find>
+      <find>csst</find>
+      <find>promise.res</find>
+      <find>nextanim</find>
+      <find>viewserva</find>
+      <find>viewServantTS</find>
+      <find>animed</find>
+      <find>viewserv</find>
+      <find>opacity</find>
+      <find>anim</find>
+      <find>viewservant</find>
+      <find>viewservantts</find>
+      <find>content</find>
+      <find>arrow</find>
+      <find>next</find>
+      <find>output</find>
+      <find>tran</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -238,10 +239,10 @@
         <option value="$PROJECT_DIR$/index.tsx" />
         <option value="$PROJECT_DIR$/src/index.tsx" />
         <option value="$PROJECT_DIR$/src/server/api.tsx" />
-        <option value="$PROJECT_DIR$/src/views/RenderedFiles.tsx" />
         <option value="$PROJECT_DIR$/src/views/Playground.tsx" />
-        <option value="$PROJECT_DIR$/src/playground.tsx" />
+        <option value="$PROJECT_DIR$/src/views/RenderedFiles.tsx" />
         <option value="$PROJECT_DIR$/src/views/PlaygroundViews.tsx" />
+        <option value="$PROJECT_DIR$/src/playground.tsx" />
       </list>
     </option>
   </component>
@@ -335,12 +336,12 @@
       <updated>1544899321532</updated>
       <workItem from="1544899322965" duration="5689000" />
       <workItem from="1545268762919" duration="2445000" />
-      <workItem from="1545501961081" duration="30936000" />
+      <workItem from="1545501961081" duration="46055000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39070000" />
+    <option name="totallyTimeSpent" value="54189000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -411,27 +412,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.babelrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="77" selection-start-line="7" selection-start-column="77" selection-end-line="7" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -480,32 +460,56 @@
     <entry file="file://$PROJECT_DIR$/src/views/Playground.tsx">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/mkdocs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.babelrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/RenderedFiles.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
-          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
           <folding>
             <element signature="e#0#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/playground.tsx">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
-          <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="286">
+          <caret line="31" column="15" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/PlaygroundViews.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        <state relative-caret-position="357">
+          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/playground.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="62" column="60" selection-start-line="62" selection-start-column="60" selection-end-line="62" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -3,7 +3,9 @@ import {displayCodeFiled} from "./RenderedFiles";
 import {getApiLiteral, getTSFunctions, getTSTypes} from "../server/api";
 import { Dropdown, Button, Navbar, Box, Heading, Media, Columns, Level, Card } from "react-bulma-components/full";
 import * as React from "react";
-import {Model, Msg, MsgTypes, ViewState} from "../playground";
+import {Model, Msg, MsgTypes, view, ViewState} from "../playground";
+import {Spring, Transition} from 'react-spring'
+
 
 export const Header = () => (
   <Navbar color="info">
@@ -34,14 +36,25 @@ export function Content(viewState: ViewState): Html<Msg> {
               <i className="fas fa-arrow-right fa-4x"></i>
             </Columns.Column>
             <Columns.Column>
-              {viewServantTSOutputBox(viewState.configuredFlavor)}
+              <Transition
+                items={true}
+                from={{ opacity: 0 }}
+                enter={{ opacity: 1 }}
+                leave={{ opacity: 0 }}
+              >
+                {_ => styles =>
+                      (<div style={styles}>
+                        {viewServantTSOutputBox(viewState)}
+                      </div>
+                      )
+                }
+              </Transition>
             </Columns.Column>
-          </Columns>
+        </Columns>
         )
         :
-        <div></div>
+        (<div></div>)
       }
-
 
     </Columns>
   )
@@ -71,7 +84,7 @@ function APIBox(model: Model): Html<Msg> {
           <Level.Item>
             <Button
               color="danger"
-              onClick={() => dispatch({type: MsgTypes.TOGGLE_SHOW_OUTPUT})}>
+              onClick={() => dispatch({type: MsgTypes.TOGGLE_SHOW_OUTPUT, shouldShow: false})}>
               Run
             </Button>
           </Level.Item>
@@ -94,26 +107,32 @@ export function viewFlavorMenu(flavor: string): Html<Msg> {
   )
 }
 
-export const viewServantTSOutputBox = (flavor: string) => (
-  <div className="box">
-    <Level>
-      <Heading>Output</Heading>
-    </Level>
-    <Level style={{marginTop: "10px"}}>
-      {displayCodeFiled(
-        "Server/types.tsx",
-        getTSTypes(flavor),
-        "typescript"
-      )}
-    </Level>
-    <Level>
-      {displayCodeFiled(
-        "Server/api.tsx",
-        getTSFunctions(),
-        "typescript"
-      )}
-    </Level>
-  </div>
-)
+interface OutputProps {
+  viewState: ViewState
+}
+
+export function viewServantTSOutputBox(viewState: ViewState): JSX.Element {
+  return(
+      <div className="box">
+        <Level>
+          <Heading>Output</Heading>
+        </Level>
+        <Level style={{marginTop: "10px"}}>
+          {displayCodeFiled(
+            "Server/types.tsx",
+            getTSTypes(viewState.configuredFlavor),
+            "typescript"
+          )}
+        </Level>
+        <Level>
+          {displayCodeFiled(
+            "Server/api.tsx",
+            getTSFunctions(),
+            "typescript"
+          )}
+        </Level>
+      </div>
+  )
+}
 
 
