@@ -1,3 +1,10 @@
+
+# Servant TS
+
+Live playground of code and output here:
+
+https://smaccoun.github.io/servant-ts/
+
 # Example
 
 Consider the following common User API
@@ -18,9 +25,9 @@ data User = User
 
 Given a flavor configuration you can auto generate with the fullowing function the below typescript files.
 
-```
+```haskell
 main :: IO ()
-main = 
+main =
   apiToTSDocs asTS reqToTSFunction outputFileLocs
   where
     outputFileLocs = OutputFileNames "Server/types.tsx" "Server/api.tsx"
