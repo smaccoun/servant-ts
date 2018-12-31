@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: b52971203bc2e3c35849a78657b9e88a3d7ecfea352ae2a952350daf125b0f18
+-- hash: 2f08286892c0175d3f10b5a09ddfee0c4685cb052f9597a33ac6ad313343a874
 
 name:           servant-ts
 version:        0.1.0.0
@@ -14,10 +14,7 @@ author:         Steven MacCoun
 maintainer:     theraccoun@gmail.com
 copyright:      2018 Steven MacCoun
 license:        BSD3
-license-file:   LICENSE
 build-type:     Simple
-extra-source-files:
-    README.md
 data-dir:       mock
 
 library
