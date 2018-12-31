@@ -15,7 +15,7 @@ import           Servant.Foreign (Foreign, GenerateList, HasForeign,
                                   _reqReturnType)
 import           Typescript
 import Data.Text.Prettyprint.Doc
-import ServantTS.Output.FunctionDoc
+import ServantTS.Output.Docs
 import ServantTS.Output.RequestFlavors.Fetch (Fetch)
 import Dhall hiding (sequence)
 
@@ -36,12 +36,9 @@ main = do
   print $ f config
  where
   asTS         = servantToReqTS (Proxy :: Proxy FpTs) (Proxy :: Proxy SimpleAPI)
-  allTypes = fromMaybe [] $ sequence $ _reqReturnType <$> asTS
-  allDeclarations =
-    T.intercalate "\n\n" $ fmap (declaration . toForeignType) allTypes
   reqToTSFunction = defaultReqToTSFunction (Proxy @Fetch)
   config = Example
-       {decFile = T.pack $ show $ pretty allDeclarations
+       {decFile = T.pack $ show (apiToTypeDeclarationDoc asTS)
        ,funcFile = T.pack $ show (apiToFunctionDoc asTS reqToTSFunction)
        }
 

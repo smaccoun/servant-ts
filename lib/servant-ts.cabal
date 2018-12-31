@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 2f08286892c0175d3f10b5a09ddfee0c4685cb052f9597a33ac6ad313343a874
+-- hash: a5cd150d514632d3b3aeb328853064b9f42eedf21fbceaf3b79f46b00d82ff5b
 
 name:           servant-ts
 version:        0.1.0.0
@@ -21,7 +21,7 @@ library
   exposed-modules:
       ServantTS
       ServantTS.Convert
-      ServantTS.Output.FunctionDoc
+      ServantTS.Output.Docs
       ServantTS.Output.RequestFlavors.Class
       ServantTS.Output.RequestFlavors.Fetch
       ServantTS.Output.TSFunctions
@@ -45,7 +45,7 @@ executable servant-ts-mk-docs
   other-modules:
       ServantTS
       ServantTS.Convert
-      ServantTS.Output.FunctionDoc
+      ServantTS.Output.Docs
       ServantTS.Output.RequestFlavors.Class
       ServantTS.Output.RequestFlavors.Fetch
       ServantTS.Output.TSFunctions
@@ -74,7 +74,7 @@ test-suite servant-ts-test
       Spec
       ServantTS
       ServantTS.Convert
-      ServantTS.Output.FunctionDoc
+      ServantTS.Output.Docs
       ServantTS.Output.RequestFlavors.Class
       ServantTS.Output.RequestFlavors.Fetch
       ServantTS.Output.TSFunctions

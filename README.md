@@ -16,7 +16,17 @@ data User = User
 
 ```
 
-Given a flavor configuration you can auto generate the following type and function declaration files for this API.
+Given a flavor configuration you can auto generate with the fullowing function the below typescript files.
+
+```
+main :: IO ()
+main = 
+  apiToTSDocs asTS reqToTSFunction outputFileLocs
+  where
+    outputFileLocs = OutputFileNames "Server/types.tsx" "Server/api.tsx"
+    asTS = servantToReqTS (Proxy :: Proxy FpTs) (Proxy :: Proxy SimpleAPI)
+    reqToTSFunction = defaultReqToTSFunction (Proxy @Fetch)
+```
 
 ```Typescript
 // Declarations
@@ -28,7 +38,6 @@ interface User {
   hasMI : Option<string>
 }
 Array<User>
-
 interface User { 
   name : string
   age : number

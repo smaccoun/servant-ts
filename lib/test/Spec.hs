@@ -21,12 +21,12 @@ servantTSSpec = describe "base" $ do
     let
       asTS = servantToReqTS (Proxy :: Proxy FpTs) (Proxy :: Proxy SimpleAPI)
       allTypes = fromMaybe [] $ sequence $ _reqReturnType <$> asTS
-      allDeclarations = fmap (declaration . toForeignType) allTypes
+      apiToTypeDeclarationDoc = fmap (declaration . toForeignType) allTypes
       answer =
         [ "Array<User>"
         , "interface User { \n  name : string\n  age : number\n  isAdmin : boolean\n  hasMI : Option<string>\n}"
         ]
-    allDeclarations `shouldBe` answer
+    apiToTypeDeclarationDoc `shouldBe` answer
   it "should print out correct functions" $ do
     let asTS = servantToReqTS (Proxy :: Proxy FpTs) (Proxy :: Proxy SimpleAPI)
         allFunctions = fmap (printTSFunction . (defaultReqToTSFunction (Proxy @Fetch))) asTS

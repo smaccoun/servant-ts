@@ -1,4 +1,4 @@
-export const getApiLiteral = (): string => (
+export const getApiLiteral = (flavor: string): string => (
   `data User = 
   User
     {name    :: Text
@@ -10,6 +10,14 @@ export const getApiLiteral = (): string => (
 type SimpleAPI =
        "user" :> Get '[JSON] [User]
   :<|> "user" :> Capture "userId" Int :> Get '[JSON] User
+
+main :: IO ()
+main = 
+  apiToTSDocs asTS reqToTSFunction outputFileLocs
+  where
+    outputFileLocs = OutputFileNames "Server/types.tsx" "Server/api.tsx"
+    asTS = servantToReqTS (Proxy :: Proxy ${flavor}) (Proxy :: Proxy SimpleAPI)
+    reqToTSFunction = defaultReqToTSFunction (Proxy @Fetch)
   `
 )
 

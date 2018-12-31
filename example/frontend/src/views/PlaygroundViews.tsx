@@ -73,7 +73,7 @@ function APIBox(model: Model): Html<Msg> {
   return dispatch => (
     <div>
       <Level>
-        <Level.Item>{displayCodeFiled("API.hs", getApiLiteral(), "haskell") }</Level.Item>
+        <Level.Item>{displayCodeFiled("API.hs", getApiLiteral(model.configuredFlavor), "haskell") }</Level.Item>
       </Level>
       <Level>
         <Level.Side align="left"></Level.Side>
