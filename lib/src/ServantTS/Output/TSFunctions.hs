@@ -89,7 +89,7 @@ reqToTSFunctionName
 reqToTSFunctionName req = camelCase $ req ^. reqFuncName
 
 withDefaultUrlFunc :: Text -> Text
-withDefaultUrlFunc t = "withRemoteBaseUrl(\\`" <> t <> "\\`)"
+withDefaultUrlFunc t = "withRemoteBaseUrl(`" <> t <> "`)"
 
 
 type TSBaseUrlMethod = Text -> Text
