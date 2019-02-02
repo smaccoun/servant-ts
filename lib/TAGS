@@ -1,0 +1,100 @@
+
+./Setup.hs,15
+main main1,2
+
+./test/Main.hs,37
+module Main Main0,1
+main main5,6
+
+./test/Spec.hs,57
+module Spec Spec0,1
+servantTSSpec servantTSSpec18,19
+
+./mock/APIs.hs,198
+module APIs APIs2,3
+data User User12,13
+data User = UserUser12,13
+    {name name13,14
+    ,age age14,15
+    ,isAdmin isAdmin15,16
+    ,hasMI hasMI16,17
+type SimpleAPI SimpleAPI20,21
+
+./mkdocs/Main.hs,193
+module Main Main2,3
+data Example Example22,23
+  ExampleExample23,24
+    {decFile decFile24,25
+    ,funcFile funcFile25,26
+instance Interpret Interpret Example28,29
+main main30,31
+
+./src/ServantTS.hs,31
+module ServantTSServantTS0,1
+
+./src/ServantTS/Output/RequestFlavors/Class.hs,448
+module ServantTS.Output.RequestFlavors.Class ServantTS.Output.RequestFlavors.Class1,2
+class (TSReturnType (HasReturnType trm)) => TSRequestMethod TSRequestMethod6,7
+  type HasReturnType HasReturnType7,8
+  printTSReqMethod printTSReqMethod8,9
+class TSReturnType TSReturnType10,11
+  printReturnType printReturnType11,12
+data PromisePromise13,14
+instance TSReturnType TSReturnType Promise15,16
+  printReturnType printReturnType16,17
+
+./src/ServantTS/Output/RequestFlavors/Fetch.hs,250
+module ServantTS.Output.RequestFlavors.Fetch ServantTS.Output.RequestFlavors.Fetch0,1
+data FetchFetch10,11
+instance TSRequestMethod TSRequestMethod Fetch12,13
+  type HasReturnType HasReturnType13,14
+  printTSReqMethod printTSReqMethod14,15
+
+./src/ServantTS/Output/Docs.hs,458
+module ServantTS.Output.Docs ServantTS.Output.Docs0,1
+data OutputFileNames OutputFileNames20,21
+    OutputFileNames OutputFileNames21,22
+    OutputFileNames { decFileLoc decFileLoc21,22
+    OutputFileNames { decFileLoc :: FilePath, funcFileLoc funcFileLoc21,22
+apiToTSDocs apiToTSDocs23,24
+apiToFunctionDoc apiToFunctionDoc35,36
+mkFunctionDoc mkFunctionDoc44,45
+allTypes allTypes48,49
+apiToTypeDeclarationDoc apiToTypeDeclarationDoc52,53
+
+./src/ServantTS/Output/TSFunctions.hs,1201
+module ServantTS.Output.TSFunctions ServantTS.Output.TSFunctions0,1
+data TSFunctionConfig TSFunctionConfig18,19
+  TSFunctionConfigTSFunctionConfig19,20
+    {_tsFuncName _tsFuncName20,21
+    ,_tsArgs _tsArgs21,22
+    ,_tsReturnType _tsReturnType22,23
+    ,_body _body23,24
+data TSTypedVar TSTypedVar26,27
+data TSTypedVar = TSTypedVar TSTypedVar26,27
+data TSTypedVar = TSTypedVar {varName varName26,27
+data TSTypedVar = TSTypedVar {varName :: Text, varType varType26,27
+printTSTypedVar printTSTypedVar28,29
+newtype TSArg TSArg30,31
+newtype TSArg = TSArg {getTypedVar getTypedVar30,31
+newtype TSFunctionBody TSFunctionBody32,33
+newtype TSFunctionBody = TSFunctionBody {getTSFunctionBody getTSFunctionBody32,33
+printArgs printArgs34,35
+printTSFunction printTSFunction38,39
+reqToTSFunctionArgs reqToTSFunctionArgs57,58
+getReqUrl getReqUrl64,65
+reqArgToTSArg reqArgToTSArg79,80
+reqToTSFunctionName reqToTSFunctionName88,89
+withDefaultUrlFunc withDefaultUrlFunc90,91
+type TSBaseUrlMethod TSBaseUrlMethod94,95
+mkDefaultBody mkDefaultBody102,103
+getTSReqMethodReturnType getTSReqMethodReturnType111,112
+defaultReqToTSFunction defaultReqToTSFunction121,122
+
+./src/ServantTS/Convert.hs,281
+module ServantTS.Convert ServantTS.Convert0,1
+data LangTypescriptLangTypescript20,21
+type TSVanilla TSVanilla22,23
+instance (T(TypescriptType a) => HasForeignType LangTypescript (TSIntermediate flavor) a24,25
+    typeFor typeFor26,27
+servantToReqTS servantToReqTS35,36
