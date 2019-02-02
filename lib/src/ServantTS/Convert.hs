@@ -19,19 +19,6 @@ type TSVanilla = TSIntermediate Vanilla
 instance (TypescriptType a) => HasForeignType LangTypescript (TSIntermediate flavor) a where
   typeFor _ _ _ = toTSIntermediate (Proxy :: Proxy a)
 
-servantToTSVanilla
-  :: ( HasForeign LangTypescript (TSIntermediate flavor) api
-     , GenerateList
-         (TSIntermediate flavor)
-         (Foreign (TSIntermediate flavor) api)
-     )
-  => (Req (TSIntermediate flavor) -> Text)
-  -> Proxy api
-  -> Proxy flavor
-  -> [Text]
-servantToTSVanilla genTS proxyApi flavor =
-  genTS <$> servantToReqTS flavor proxyApi
-
 servantToReqTS
   :: ( HasForeign LangTypescript (TSIntermediate flavor) api
      , GenerateList

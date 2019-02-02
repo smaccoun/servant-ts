@@ -15,6 +15,7 @@ import           Test.Hspec
 import           Typescript
 import ServantTS.Output.RequestFlavors.Fetch (Fetch)
 
+
 servantTSSpec :: Spec
 servantTSSpec = describe "base" $ do
   it "should test basic" $ do
@@ -33,7 +34,7 @@ servantTSSpec = describe "base" $ do
     allFunctions `shouldBe` answer
  where
   answer =
-    [ "function getUser(): Promise<Array<User>> {\n  return fetch(withRemoteBaseUrl(\\`user\\`))\n}"
-    , "function getUserByUserId(userId : number): Promise<User> {\n  return fetch(withRemoteBaseUrl(\\`user/${userId}\\`))\n}"
+    [ "function getUser(): Promise<Array<User>> {\n  return fetch(withRemoteBaseUrl(`user`))\n}"
+    , "function getUserByUserId(userId : number): Promise<User> {\n  return fetch(withRemoteBaseUrl(`user/${userId}`))\n}"
     ]
 

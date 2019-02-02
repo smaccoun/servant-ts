@@ -1,4 +1,4 @@
-resolver: lts-13.0
+resolver: lts-12.26
 
 ghc-options:
   servant-ts: -Wall -O0 -fwarn-tabs -fno-warn-orphans
