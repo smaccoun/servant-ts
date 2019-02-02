@@ -103,7 +103,7 @@ mkDefaultBody
   -> TSFunctionBody
 mkDefaultBody req tsReqMethod tsBaseUrlFunc = TSFunctionBody
   [ "return "
-    <> printTSReqMethod@trm
+    <> printTSReqMethod @trm
     <> "("
     <> (tsBaseUrlFunc $ getReqUrl req)
     <> ")"
@@ -115,7 +115,7 @@ getTSReqMethodReturnType
   => Proxy t
   -> ft
   -> Text
-getTSReqMethodReturnType _ ft = (printReturnType@(HasReturnType t)) ft
+getTSReqMethodReturnType _ ft = (printReturnType @(HasReturnType t)) ft
 
 
 defaultReqToTSFunction
