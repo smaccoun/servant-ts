@@ -1,21 +1,17 @@
 module ServantTS.Output.TSFunctions where
 
 import           Control.Lens
-import Data.Text.Strict.Lens
-import           Data.Maybe      (fromMaybe)
 import           Data.Monoid     ((<>))
 import           Data.Proxy
 import           Data.Text       (Text)
 import qualified Data.Text       as T
-import           Debug.Trace
-import           GHC.Generics
-import           Servant.API
 import Data.Text.Prettyprint.Doc
 import           Servant.Foreign
 import           Servant.Foreign.Inflections (camelCase)
 import           Typescript
 import ServantTS.Output.RequestFlavors.Class
 
+{- Represents the essential parts to describe a Typescript function -}
 data TSFunctionConfig =
   TSFunctionConfig
     {_tsFuncName   :: Text
@@ -24,18 +20,7 @@ data TSFunctionConfig =
     ,_body         :: TSFunctionBody
     }
 
-data TSTypedVar = TSTypedVar {varName :: Text, varType :: Text} deriving (Show)
-
-printTSTypedVar (TSTypedVar name' type') = name' <> " : " <> type'
-
-newtype TSArg = TSArg {getTypedVar :: TSTypedVar} deriving (Show)
-
-newtype TSFunctionBody = TSFunctionBody {getTSFunctionBody :: [Text]}
-
-printArgs :: [TSArg] -> Text
-printArgs tsArgs' =
-  T.intercalate "," $ printTSTypedVar . getTypedVar <$> tsArgs'
-
+{- The main function to use when wanting to print out all the desired network request calls -}
 printTSFunction :: TSFunctionConfig -> Text
 printTSFunction (TSFunctionConfig tsFuncName' tsArgs' tsReturnType' body') =
   T.pack $ show $ vsep [pretty funcDeclareLine, printBody, pretty ("}" :: Text)]
@@ -50,6 +35,27 @@ printTSFunction (TSFunctionConfig tsFuncName' tsArgs' tsReturnType' body') =
       <> " {"
   printBody = indent 2 $ vsep (pretty <$> getTSFunctionBody body')
 
+
+newtype TSFunctionBody = TSFunctionBody {getTSFunctionBody :: Lines}
+type Lines = [Text]
+
+{-|TSArg is an argument in a typescript function, consisting of a name and a type
+  e.g. :  function getUserId(userId: number) {return userId}
+  has _tsArgs = [TSArg (TSTypedVar {varName = "userId", varType: "number"})]
+-}
+newtype TSArg = TSArg {getTypedVar :: TSTypedVar} deriving (Show)
+data TSTypedVar = TSTypedVar {varName :: Text, varType :: Text} deriving (Show)
+
+
+
+{-| The below functions are generally considered for internal use only, but the module exposes them in case of edge case customization
+-}
+printArgs :: [TSArg] -> Text
+printArgs tsArgs' =
+  T.intercalate "," $ printTSTypedVar . getTypedVar <$> tsArgs'
+
+printTSTypedVar :: TSTypedVar -> Text
+printTSTypedVar (TSTypedVar name' type') = name' <> " : " <> type'
 
 reqToTSFunctionArgs
   :: (IsForeignType (TSIntermediate flavor))
@@ -91,7 +97,6 @@ reqToTSFunctionName req = camelCase $ req ^. reqFuncName
 withDefaultUrlFunc :: Text -> Text
 withDefaultUrlFunc t = "withRemoteBaseUrl(`" <> t <> "`)"
 
-
 type TSBaseUrlMethod = Text -> Text
 
 mkDefaultBody
@@ -101,7 +106,7 @@ mkDefaultBody
   -> Proxy trm
   -> TSBaseUrlMethod
   -> TSFunctionBody
-mkDefaultBody req tsReqMethod tsBaseUrlFunc = TSFunctionBody
+mkDefaultBody req _ tsBaseUrlFunc = TSFunctionBody
   [ "return "
     <> printTSReqMethod @trm
     <> "("
