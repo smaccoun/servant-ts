@@ -9,7 +9,7 @@ https://smaccoun.github.io/servant-ts/
 
 This library relies heavily on the companion library:
 
-[aeson-generic-ts]("https://github.com/smaccoun/aeson-generic-ts")
+[aeson-generic-ts](https://github.com/smaccoun/aeson-generic-ts)
 
 # Example
 
