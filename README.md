@@ -1,9 +1,15 @@
+[![CircleCI](https://circleci.com/gh/smaccoun/servant-ts.svg?style=svg)](https://circleci.com/gh/smaccoun/servant-ts)
 
 # Servant TS
+Instantly generate highly configurable typescript requests and defintion from your Servant API
 
 Live playground of code and output here:
 
 https://smaccoun.github.io/servant-ts/
+
+This library relies heavily on the companion library:
+
+[aeson-generic-ts]("https://github.com/smaccoun/aeson-generic-ts")
 
 # Example
 

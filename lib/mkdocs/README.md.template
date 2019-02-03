@@ -1,9 +1,12 @@
+[![CircleCI](https://circleci.com/gh/smaccoun/servant-ts.svg?style=svg)](https://circleci.com/gh/smaccoun/servant-ts)
+
 
 \(record : { decFile : Text,
              funcFile : Text  }
      ) ->  ''
 
 # Servant TS
+Instantly generate highly configurable typescript requests and defintion from your Servant API
 
 Live playground of code and output here:
 
