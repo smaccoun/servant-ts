@@ -22,7 +22,7 @@ executables:
   servant-ts-mk-docs:
     main: Main.hs
     dependencies:
-      - dhall
+      - dhall >= 1.27.0
     source-dirs:
       - mkdocs
       - src
