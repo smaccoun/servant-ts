@@ -24,9 +24,9 @@ data Example =
   Example
     {decFile  :: Text
     ,funcFile :: Text
-    } deriving (Generic, Inject)
+    } deriving (Generic, ToDhall)
 
-instance Interpret Example
+instance FromDhall Example
 
 main :: IO ()
 main = do
